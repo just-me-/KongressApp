@@ -1,5 +1,5 @@
 {
-  "name": "simple-todos",
+  "name": "KongressApp",
   "private": true,
   "scripts": {
     "start": "meteor run"
