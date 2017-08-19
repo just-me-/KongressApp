@@ -9,23 +9,20 @@ if (Meteor.isServer) {
   // Only publish tasks that are public or belong to the current user
   Meteor.publish('tasks', function tasksPublication() {
     return Tasks.find({
-      $or: [{
-        private: {
-          $ne: true
-        }
-      }, {
-        owner: this.userId
-      }, ],
+      $or: [
+        { private: { $ne: true } },
+        { owner: this.userId },
+      ],
     });
   });
 }
 
 Meteor.methods({
-  'tasks.insert' (text) {
+  'tasks.insert'(text) {
     check(text, String);
 
     // Make sure the user is logged in before inserting a task
-    if (!Meteor.userId()) {
+    if (! Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
 
@@ -36,7 +33,7 @@ Meteor.methods({
       username: Meteor.user().username,
     });
   },
-  'tasks.remove' (taskId) {
+  'tasks.remove'(taskId) {
     check(taskId, String);
 
     const task = Tasks.findOne(taskId);
@@ -47,7 +44,7 @@ Meteor.methods({
 
     Tasks.remove(taskId);
   },
-  'tasks.setChecked' (taskId, setChecked) {
+  'tasks.setChecked'(taskId, setChecked) {
     check(taskId, String);
     check(setChecked, Boolean);
 
@@ -57,13 +54,9 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    Tasks.update(taskId, {
-      $set: {
-        checked: setChecked
-      }
-    });
+    Tasks.update(taskId, { $set: { checked: setChecked } });
   },
-  'tasks.setPrivate' (taskId, setToPrivate) {
+  'tasks.setPrivate'(taskId, setToPrivate) {
     check(taskId, String);
     check(setToPrivate, Boolean);
 
@@ -74,10 +67,6 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    Tasks.update(taskId, {
-      $set: {
-        private: setToPrivate
-      }
-    });
+    Tasks.update(taskId, { $set: { private: setToPrivate } });
   },
 });
