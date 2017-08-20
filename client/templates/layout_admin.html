@@ -1,0 +1,16 @@
+<template name="layout_admin">
+  <div id="layout_admin">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+
+    <aside>
+      {{> yield "menu"}}
+    </aside>
+
+    <article>
+      {{> yield}}
+    </article>
+
+  </div>
+</template>
