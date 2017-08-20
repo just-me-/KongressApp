@@ -1,0 +1,19 @@
+<template name="layout_user">
+  <div id="layout_user">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+
+    <aside>
+      {{> yield "menu"}}
+    </aside>
+
+    <article>
+      {{> yield}}
+    </article>
+
+    <footer>
+      {{> yield "footer"}}
+    </footer>
+  </div>
+</template>
