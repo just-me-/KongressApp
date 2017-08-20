@@ -1,3 +1,27 @@
 <template name="admin_speaker">
     <h1>Speaker</h1>
+
+    <div class="container">
+      <form class="new-speaker">
+        <input type="text" name="text" placeholder="Type to add new speaker" />
+      </form>
+
+      <ul class="listofspeakers">
+        {{#each speakers}}
+          {{> speaker}}
+        {{/each}}
+
+        {{#each myspeakers}}
+          {{> speaker}}
+        {{/each}}
+      </ul>
+    </div>
+
+</template>
+
+
+<template name="speaker">
+  <li>
+    <span class="text">{{text}}</span>
+  </li>
 </template>
