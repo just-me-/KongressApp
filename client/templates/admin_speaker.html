@@ -2,26 +2,68 @@
     <h1>Speaker</h1>
 
     <div class="container">
-      <form class="new-speaker">
-        <input type="text" name="text" placeholder="Type to add new speaker" />
+
+      <div id="saved-alert" style="display: none; ">
+        <span>Saved!</span>
+      </div>
+
+      <form id="save-speaker">
+        <div id="div-name">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" />
+        </div>
+        <div id="div-firstname">
+          <label for="firstname">First name</label>
+          <input id="firstname" name="firstname" type="text" />
+        </div>
+        <div id="div-login">
+          <label for="login">Login</label>
+          <input id="login" name="login" type="text" placeholder="Login name for keynote" />
+        </div>
+        <div id="div-password">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Password for login" />
+        </div>
+        <div id="div-description">
+          <label for="description">description</label>
+          <textarea id="description" name="text" placeholder="Add a description"></textarea>
+        </div>
+        <div id="div-buttons">
+          <input id="id" name="id" type="hidden" value="">
+          <input id="save" name="save" type="submit" value="Save">
+        </div>
       </form>
 
-      <ul class="listofspeakers">
+      <table id="listed-speakers">
+        <tr class="table-header">
+          <th class="delete">Delete</th>
+          <th class="edit">Edit</th>
+          <th class="name">Name</th>
+          <th class="firstname">First name</th>
+          <th class="login">Login</th>
+          <th class="password">Password</th>
+          <th class="description">Description</th>
+        </tr>
+
         {{#each speakers}}
           {{> speaker}}
         {{/each}}
 
-        {{#each myspeakers}}
-          {{> speaker}}
-        {{/each}}
-      </ul>
+      </table>
+
     </div>
 
 </template>
 
 
 <template name="speaker">
-  <li>
-    <span class="text">{{text}}</span>
-  </li>
+  <tr class="table-body">
+    <td class="delete">del</td>
+    <td class="edit">edi</td>
+    <td class="name">{{name}}</td>
+    <td class="firstname">{{firstname}}</td>
+    <td class="login">{{login}}</td>
+    <td class="password">{{password}}</td>
+    <td class="description">{{description}}</td>
+  </tr>
 </template>

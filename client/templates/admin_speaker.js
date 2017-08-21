@@ -13,31 +13,58 @@ Template.admin_speaker.onCreated(function bodyOnCreated() {
 
 Template.admin_speaker.helpers({
   speakers() {
-    var list = Speakers.find();
-    console.log("ahaaa");
-    console.log(list);
     return Speakers.find({}, { sort: { createdAt: -1 } });
   },
-  myspeakers: [
-    { text: 'This is speaker 1' },
-    { text: 'This is speaker 2' },
-    { text: 'This is speaker 3' },
-  ],
 });
 
 Template.admin_speaker.events({
-  'submit .new-speaker'(event) {
+  'submit form#save-speaker'(event) {
     // Prevent default browser form submit
     event.preventDefault();
 
     // Get value from form element
     const target = event.target;
-    const text = target.text.value;
+    //const text = target.text.value;
 
-    // Insert a task into the collection
-    Meteor.call('speakers.insert', text);
+    // Insert a speaker into the collection
+    var speakerData = {
+    	'name': target.name.value,
+      'firstname': target.firstname.value,
+      'login': target.login.value,
+      'password': target.password.value,
+      'description': target.description.value
+    }
+    // should there be an id => update; else => insert a new one
+    if(target.id.value != ""){
+      Meteor.call('speakers.update', target.id.value, speakerData);
+    } else {
+      Meteor.call('speakers.insert', speakerData);
+    }
 
     // Clear form
-    target.text.value = '';
+    for (var key in speakerData){
+      eval("target." + key + ".value = ''");
+    }
+    target.id.value="";
+
+    // show saved alert for x secounds
+    $("#saved-alert").fadeIn().delay(3000).fadeOut();
+
   },
+  'click td.edit': function(){
+    // copy inputs & id for db
+    var copyInputs = ['name', 'firstname', 'login', 'password', 'description'];
+    for (input of copyInputs) {
+      console.log(input);
+      eval(`$('#save-speaker #`+input+`').val(this.`+input+`)`);
+    }
+    $('#save-speaker #id').val(this._id);
+
+  },
+  'click td.delete': function(){
+    Meteor.call('speakers.remove', this._id);
+  }
 });
+
+
+// 2do: pflichtfelder + password ...
