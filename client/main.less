@@ -118,14 +118,46 @@ button,
 /* list view */
 // table
 table {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
+  white-space: nowrap;
+  text-align: center;
+  background: rgba(46, 46, 46, 0.5);
+  border-radius: 15px;
+  border-collapse: separate;
+  border-spacing: 1px 2px;
+  padding-left: 1px;
+  padding-right: 1px;
+  cursor: pointer;
   .table-header {
     th {
+      min-width: 80px;
+      color: #ffffff;
     }
   }
   .table-body {
+    // different color on every 2nd row
+    &:nth-child(even) {background: #FFFFFF}
+    &:nth-child(odd) {background: #EBEBEB}
+    // border radius on bottom
+    &:last-child td:first-child {border-bottom-left-radius:15px;}
+    &:last-child td:last-child {border-bottom-right-radius:15px;}
+    &:hover {
+      background-color: rgb(130, 130, 130);
+      color: #fff;
+      box-shadow: 0 0 5px 1px #969696;
+    }
     td {
     }
   }
+}
+
+// content container
+.container {
+  padding-bottom: 50px;
+  padding-top: 10px;
 }
 
 // card background
