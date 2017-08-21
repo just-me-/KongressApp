@@ -4,8 +4,6 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Speakers } from '../../imports/api/speakers.js';
 
-// import './admin_speaker.html';
-
 Template.admin_speaker.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('speakers');
@@ -24,7 +22,24 @@ Template.admin_speaker.events({
 
     // Get value from form element
     const target = event.target;
-    //const text = target.text.value;
+
+    // Validation
+    var failed = false;
+    $('form#save-speaker').find('input').each(function(){
+      // strip double spaces & leading + ending spaces
+      $(this).val($(this).val().replace(/\s\s+/g, ' ').replace(/^\s+|\s+$/gm,''));
+
+      $(this).removeClass('error');
+      if($(this).prop('required') && $(this).val().length < 1){
+        // failed => css class + error alert
+        $(this).addClass('error');
+        failed = true;
+      }
+    });
+    if(failed == true){
+      swal("Oops...", "Einige Angaben fehlen oder sind nicht korrekt!", "error");
+      return;
+    }
 
     // Insert a speaker into the collection
     var speakerData = {
@@ -64,6 +79,3 @@ Template.admin_speaker.events({
     Meteor.call('speakers.remove', this._id);
   }
 });
-
-
-// 2do: pflichtfelder ...
