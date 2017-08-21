@@ -3,7 +3,7 @@
 
     <div class="container">
 
-      <form id="save-speaker">
+      <form id="save-speaker" class="clear card">
         <div id="div-name">
           <label for="name">Name *</label>
           <input id="name" name="name" type="text" required />
@@ -14,23 +14,29 @@
         </div>
         <div id="div-login">
           <label for="login">Login</label>
-          <input id="login" name="login" type="text" placeholder="Login name for keynote" />
+          <input id="login" name="login" type="text" />
+          <i class="material-icons helpicon" data-tooltip="Login-Name für die Keynote-Zugangsdaten">help</i>
+
         </div>
         <div id="div-password">
           <label for="password">Passwort</label>
-          <input id="password" name="password" type="password" placeholder="Password for login" />
+          <input id="password" name="password" type="password" />
+          <i class="material-icons helpicon" data-tooltip="Passwort für das Login">help</i>
         </div>
         <div id="div-description">
           <label for="description">Beschreibung</label>
-          <textarea id="description" name="text" placeholder="Add a description"></textarea>
+          <textarea id="description" name="text"></textarea>
+          <i class="material-icons helpicon" data-tooltip="Fügen Sie eine Beschreibung für den Redner hinzu.">help</i>
         </div>
-        <div id="div-buttons">
+        <div id="div-buttons" class="clear">
           <input id="id" name="id" type="hidden" value="">
-          <input id="save" name="save" type="submit" value="Speichern">
+          <span class="labelspace"></span>
+          <input id="save" name="save" type="submit" value="Speichern" class="button">
+          <input id="reset" name="reset" type="reset" value="Reset" class="button not-main">
         </div>
       </form>
 
-      <table id="listed-speakers">
+      <table id="listed-speakers" class="clear">
         <tr class="table-header">
           <th class="delete">Löschen</th>
           <th class="edit">Ändern</th>
@@ -48,7 +54,7 @@
       </table>
 
     </div>
-
+    {{ > tooltips }}
 </template>
 
 

@@ -9,6 +9,10 @@ Template.admin_speaker.onCreated(function bodyOnCreated() {
   Meteor.subscribe('speakers');
 });
 
+Template.admin_speaker.onRendered(function(){
+  autosize($('textarea'));
+});
+
 Template.admin_speaker.helpers({
   speakers() {
     return Speakers.find({}, { sort: { createdAt: -1 } });
@@ -64,6 +68,10 @@ Template.admin_speaker.events({
       eval("target." + key + ".value = ''");
     }
     target.id.value="";
+  },
+  'click #reset': function(){
+    // remove id => the rest will handel html reset input 
+    $('#save-speaker #id').val("");
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
