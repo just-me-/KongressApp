@@ -41,15 +41,14 @@ Template.admin_speaker.events({
       Meteor.call('speakers.insert', speakerData);
     }
 
+    // show saved alert for x secounds
+    swal("Gespeichert!", target.firstname.value + " " + target.name.value + " wurde erfolgreich als Eintrag gespeichert.", "success")
+
     // Clear form
     for (var key in speakerData){
       eval("target." + key + ".value = ''");
     }
     target.id.value="";
-
-    // show saved alert for x secounds
-    $("#saved-alert").fadeIn().delay(3000).fadeOut();
-
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
