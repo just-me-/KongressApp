@@ -22,7 +22,7 @@ Meteor.methods({
       name: speakerData['name'],
       firstname: speakerData['firstname'],
       login: speakerData['login'],
-      password: speakerData['password'],
+      password: encrypt(speakerData['password']),
       description: speakerData['description'],
       createdAt: new Date(),
     });
@@ -37,13 +37,21 @@ Meteor.methods({
     for (input of stringInputs) {
       check(speakerData[input], String);
     }
-    
+
+    // only update pw if changed
+    if(speakerData['password'] != ""){
+      Speakers.update(taskId, {
+        $set: {
+          password: encrypt(speakerData['password']),
+        },
+      });
+    }
+
     Speakers.update(taskId, {
       $set: {
         name: speakerData['name'],
         firstname: speakerData['firstname'],
         login: speakerData['login'],
-        password: speakerData['password'],
         description: speakerData['description'],
         lastChange: new Date(),
       },
@@ -57,6 +65,12 @@ Meteor.methods({
     Speakers.remove(taskId);
   },
   'speakers.checkPassword'(password) {
+    var cryptedPW = encrypt(password);
+    // ...
     return true;
   },
 });
+
+function encrypt(string) {
+  return CryptoJS.SHA256(string).toString();
+}

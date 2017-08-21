@@ -52,12 +52,13 @@ Template.admin_speaker.events({
 
   },
   'click td.edit': function(){
-    // copy inputs & id for db
-    var copyInputs = ['name', 'firstname', 'login', 'password', 'description'];
+    // copy inputs & id for db => but not pw
+    var copyInputs = ['name', 'firstname', 'login', 'description'];
     for (input of copyInputs) {
       console.log(input);
       eval(`$('#save-speaker #`+input+`').val(this.`+input+`)`);
     }
+    $('#save-speaker #password').val("");
     $('#save-speaker #id').val(this._id);
 
   },
@@ -67,4 +68,4 @@ Template.admin_speaker.events({
 });
 
 
-// 2do: pflichtfelder + password ...
+// 2do: pflichtfelder ...
