@@ -60,7 +60,6 @@ Template.admin_speaker.events({
     }
     $('#save-speaker #password').val("");
     $('#save-speaker #id').val(this._id);
-
   },
   'click td.delete': function(){
     Meteor.call('speakers.remove', this._id);

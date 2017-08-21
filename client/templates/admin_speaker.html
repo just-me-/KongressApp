@@ -4,7 +4,7 @@
     <div class="container">
 
       <div id="saved-alert" style="display: none; ">
-        <span>Saved!</span>
+        <span>Eintrag erfolgreich gespeichert!</span>
       </div>
 
       <form id="save-speaker">
@@ -13,7 +13,7 @@
           <input id="name" type="text" name="name" />
         </div>
         <div id="div-firstname">
-          <label for="firstname">First name</label>
+          <label for="firstname">Vorname</label>
           <input id="firstname" name="firstname" type="text" />
         </div>
         <div id="div-login">
@@ -21,28 +21,28 @@
           <input id="login" name="login" type="text" placeholder="Login name for keynote" />
         </div>
         <div id="div-password">
-          <label for="password">Password</label>
+          <label for="password">Passwort</label>
           <input id="password" name="password" type="password" placeholder="Password for login" />
         </div>
         <div id="div-description">
-          <label for="description">description</label>
+          <label for="description">Beschreibung</label>
           <textarea id="description" name="text" placeholder="Add a description"></textarea>
         </div>
         <div id="div-buttons">
           <input id="id" name="id" type="hidden" value="">
-          <input id="save" name="save" type="submit" value="Save">
+          <input id="save" name="save" type="submit" value="Speichern">
         </div>
       </form>
 
       <table id="listed-speakers">
         <tr class="table-header">
-          <th class="delete">Delete</th>
-          <th class="edit">Edit</th>
+          <th class="delete">Löschen</th>
+          <th class="edit">Ändern</th>
           <th class="name">Name</th>
-          <th class="firstname">First name</th>
+          <th class="firstname">Vorname</th>
           <th class="login">Login</th>
-          <th class="password">Password</th>
-          <th class="description">Description</th>
+          <th class="password">Passwort</th>
+          <th class="description">Beschreibung</th>
         </tr>
 
         {{#each speakers}}
@@ -58,8 +58,8 @@
 
 <template name="speaker">
   <tr class="table-body">
-    <td class="delete">del</td>
-    <td class="edit">edi</td>
+    <td class="delete"><i class="material-icons md-20">delete</i></td>
+    <td class="edit"><i class="material-icons md-20">edit</i></td>
     <td class="name">{{name}}</td>
     <td class="firstname">{{firstname}}</td>
     <td class="login">{{login}}</td>
