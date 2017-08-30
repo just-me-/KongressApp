@@ -1,0 +1,65 @@
+<template name="admin_sponsor">
+  <h1>Sponsoren</h1>
+
+  <div class="container">
+
+    <form id="save-sponsor" class="clear card">
+      <div id="div-name">
+        <label for="name">Name *</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+      <div id="div-url">
+        <label for="url">Bild URL *</label>
+        <input id="url" name="url" type="text" required />
+        <i class="material-icons helpicon" data-tooltip="Das Logo des Sponsors, welches angezeigt werden soll.">help</i>
+      </div>
+      <div id="div-time">
+        <label for="time">Anzeigedauer (in s)</label>
+        <input id="time" name="time" type="text" />
+        <i class="material-icons helpicon" data-tooltip="Die Anzeigedauer des Logos in Sekunden, bis der nächste Sponsor angezeigt wird. Wird das Feld leer gelassen, wird der Standartwert verwendet.">help</i>
+      </div>
+      <div id="div-buttons" class="clear">
+        <input id="id" name="id" type="hidden" value="">
+        <span class="labelspace"></span>
+        <input id="save" name="save" type="submit" value="Speichern" class="button">
+        <input id="reset" name="reset" type="reset" value="Reset" class="button not-main">
+      </div>
+    </form>
+
+    <table id="listed-sponsors" class="clear">
+      <tr class="table-header">
+        <th class="delete">Löschen</th>
+        <th class="edit">Ändern</th>
+        <th class="name">Name</th>
+        <th class="url none">Bild URL</th>
+        <th class="img">Bild</th>
+        <th class="time">Anzeigedauer</th>
+      </tr>
+
+      {{#each sponsors}}
+        {{> sponsor}}
+      {{/each}}
+
+    </table>
+
+  </div>
+  {{ > tooltips }}
+</template>
+
+
+<template name="sponsor">
+  <tr class="table-body">
+    <td class="delete"><i class="material-icons md-20">delete</i></td>
+    <td class="edit"><i class="material-icons md-20">edit</i></td>
+    <td class="name">{{name}}</td>
+    <td class="url none">{{url}}</td>
+    <td class="img"><img src="{{url}}" alt="Logo"></td>
+    <td class="time">
+      {{#if time}}
+        {{time}} Sekunden
+      {{else}}
+        -
+      {{/if}}
+    </td>
+  </tr>
+</template>

@@ -40,10 +40,10 @@ Meteor.startup(function(){
     this.render('layout_admin_menu', {to: 'menu'});
     this.render('admin_speaker');
   });
-  Router.route('/admin_sponsors', function () {
+  Router.route('/admin_sponsor', function () {
     this.layout('layout_admin');
     this.render('layout_admin_menu', {to: 'menu'});
-    this.render('admin_sponsors');
+    this.render('admin_sponsor');
   });
 
   // keynote sites

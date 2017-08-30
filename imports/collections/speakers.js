@@ -5,35 +5,28 @@ import { check } from 'meteor/check';
 export const Speakers = new Mongo.Collection('speakers');
 var Schema =  new SimpleSchema({
   name: {
-    type: String,
-    label: ""
+    type: String
   },
   firstname: {
-    type: String,
-    label: ""
+    type: String
   },
   login: {
     type: String,
-    label: "",
     optional: true
   },
   password: {
     type: String,
-    label: "",
     optional: true
   },
   description: {
     type: String,
-    label: "",
     optional: true
   },
   createdAt: {
-    type: Date,
-    label: ""
+    type: Date
   },
   lastChange: {
     type: Date,
-    label: "",
     optional: true
   }
 });
@@ -83,14 +76,12 @@ Meteor.methods({
   'speakers.remove'(taskId) {
     check(taskId, String);
 
-    const speaker = Speakers.findOne(taskId);
-
     Speakers.remove(taskId);
   },
   'speakers.checkPassword'(password) {
     var cryptedPW = encrypt(password);
     // ...
-    // 2Do for login mechanism 
+    // 2Do for login mechanism
     return true;
   },
 });

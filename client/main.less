@@ -21,6 +21,8 @@ p {
 .left {float: left;}
 .right {float: right;}
 .clear {clear: both;}
+.hidden {visibility: hidden;}
+.none {display: none;}
 
 /* material icons */
 // sizing
@@ -59,7 +61,7 @@ textarea {
 input.error,
 textarea.error {
   background-color: rgba(221, 89, 86, 0.8);
-  color: #fff; 
+  color: #fff;
 }
 // labels
 label {
@@ -242,6 +244,11 @@ form.card {
       padding-top: 10px;
       padding-bottom: 5px;
     }
+  }
+  // Sponsor Screen
+  #listed-sponsors .img > img {
+    max-height: 50px;
+    width: auto;
   }
 
 }
