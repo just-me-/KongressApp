@@ -1,14 +1,10 @@
 <template name="layout_admin">
   <div id="layout_admin">
-    <header>
-      <h1>{{title}}</h1>
-    </header>
-
-    <aside>
+    <aside id="menu">
       {{> yield "menu"}}
     </aside>
 
-    <article>
+    <article id="main">
       {{> yield}}
     </article>
 

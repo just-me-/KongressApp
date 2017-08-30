@@ -65,7 +65,13 @@
     <td class="name">{{name}}</td>
     <td class="firstname">{{firstname}}</td>
     <td class="login">{{login}}</td>
-    <td class="password">{{password}}</td>
+    <td class="password">
+      {{#if password}}
+        Passwort gesetzt
+      {{else}}
+        Kein Passwort vorhanden
+      {{/if}}
+    </td>
     <td class="description">{{description}}</td>
   </tr>
 </template>

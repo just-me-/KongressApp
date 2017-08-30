@@ -1,3 +1,32 @@
 <template name="layout_admin_menu">
     <h1>Menu (Admin)</h1>
+
+    <div id="menu-links">
+
+      <div class="menu-element">
+        <a href="/admin_program">
+          <i class="material-icons">event_note</i><span>Programm</span>
+        </a>
+      </div>
+
+      <div class="menu-element active">
+        <a href="/admin_speaker">
+          <i class="material-icons">record_voice_over</i><span>Speaker</span>
+        </a>
+      </div>
+
+      <div class="menu-element">
+        <a href="/admin_sponsors">
+          <i class="material-icons">business</i><span>Sponsoren</span>
+        </a>
+      </div>
+
+      <div id="logout" class="menu-element">
+        <a href="/login">
+          <i class="material-icons">exit_to_app</i><span>Abmelden</span>
+        </a>
+      </div>
+
+    </div>
+
 </template>

@@ -70,7 +70,7 @@ Template.admin_speaker.events({
     target.id.value="";
   },
   'click #reset': function(){
-    // remove id => the rest will handel html reset input 
+    // remove id => the rest will handel html reset input
     $('#save-speaker #id').val("");
   },
   'click td.edit': function(){
