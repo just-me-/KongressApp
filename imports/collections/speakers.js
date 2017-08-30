@@ -3,6 +3,41 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Speakers = new Mongo.Collection('speakers');
+var Schema =  new SimpleSchema({
+  name: {
+    type: String,
+    label: ""
+  },
+  firstname: {
+    type: String,
+    label: ""
+  },
+  login: {
+    type: String,
+    label: "",
+    optional: true
+  },
+  password: {
+    type: String,
+    label: "",
+    optional: true
+  },
+  description: {
+    type: String,
+    label: "",
+    optional: true
+  },
+  createdAt: {
+    type: Date,
+    label: ""
+  },
+  lastChange: {
+    type: Date,
+    label: "",
+    optional: true
+  }
+});
+Speakers.attachSchema(Schema);
 
 if (Meteor.isServer) {
   Meteor.publish('speakers', function tasksPublication() {
@@ -12,12 +47,6 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   'speakers.insert'(speakerData) {
-    // check handels String, Number, Boolean, undefined, null
-    var stringInputs = ['name', 'firstname', 'login', 'password', 'description'];
-    for (input of stringInputs) {
-      check(speakerData[input], String);
-    }
-
     Speakers.insert({
       name: speakerData['name'],
       firstname: speakerData['firstname'],
@@ -31,12 +60,6 @@ Meteor.methods({
     check(taskId, String);
 
     const speaker = Speakers.findOne(taskId);
-
-    // check handels String, Number, Boolean, undefined, null
-    var stringInputs = ['name', 'firstname', 'login', 'password', 'description'];
-    for (input of stringInputs) {
-      check(speakerData[input], String);
-    }
 
     // only update pw if changed
     if(speakerData['password'] != ""){
@@ -67,6 +90,7 @@ Meteor.methods({
   'speakers.checkPassword'(password) {
     var cryptedPW = encrypt(password);
     // ...
+    // 2Do for login mechanism 
     return true;
   },
 });
