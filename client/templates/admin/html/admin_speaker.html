@@ -16,7 +16,6 @@
           <label for="login">Login</label>
           <input id="login" name="login" type="text" />
           <i class="material-icons helpicon" data-tooltip="Login-Name für die Keynote-Zugangsdaten">help</i>
-
         </div>
         <div id="div-password">
           <label for="password">Passwort</label>
@@ -43,7 +42,6 @@
           <th class="name">Name</th>
           <th class="firstname">Vorname</th>
           <th class="login">Login</th>
-          <th class="password">Passwort</th>
           <th class="description">Beschreibung</th>
         </tr>
 
@@ -65,13 +63,6 @@
     <td class="name">{{name}}</td>
     <td class="firstname">{{firstname}}</td>
     <td class="login">{{login}}</td>
-    <td class="password">
-      {{#if password}}
-        Passwort gesetzt
-      {{else}}
-        Kein Passwort vorhanden
-      {{/if}}
-    </td>
     <td class="description">{{description}}</td>
   </tr>
 </template>
