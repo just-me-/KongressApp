@@ -1,2 +1,2 @@
-import '../imports/api/tasks.js';
-import '../imports/api/speakers.js';
+import '../imports/collections/tasks.js';
+import '../imports/collections/speakers.js';

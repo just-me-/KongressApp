@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
-import { Speakers } from '../../imports/api/speakers.js';
+import { Speakers } from '../../../../imports/collections/speakers.js';
 
 Template.admin_speaker.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
