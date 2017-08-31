@@ -1,3 +1,76 @@
 <template name="admin_program">
-    <h1>Program</h1>
+  <h1>Programm</h1>
+
+  <div class="container">
+
+    <form id="save-program" class="clear card">
+      <div id="div-title">
+        <label for="title">Titel *</label>
+        <input id="title" name="title" type="text" required />
+      </div>
+      <div id="div-description">
+        <label for="description">Beschreibung</label>
+        <textarea id="description" name="text"></textarea>
+      </div>
+      <div id="div-speaker">
+        <label for="speaker">Speaker *</label>
+        <select id="speaker" name="speaker" placeholder="Wählen Sie einen Redner..." required>
+          <option value="">Wählen Sie einen Redner...</option>
+          {{#each speakers}}
+            <option value="{{_id}}">{{name}}, {{firstname}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div id="div-startTime">
+        <label for="startTime">Start *</label>
+        <input id="startTime" class="datetimepicker" name="startTime" type="text" required />
+      </div>
+      <div id="div-endTime">
+        <label for="endTime">Ende *</label>
+        <input id="endTime" class="datetimepicker" name="endTime" type="text" required />
+      </div>
+
+      <div id="div-buttons" class="clear">
+        <input id="id" name="id" type="hidden" value="">
+        <span class="labelspace"></span>
+        <input id="save" name="save" type="submit" value="Speichern" class="button">
+        <input id="reset" name="reset" type="reset" value="Reset" class="button not-main">
+      </div>
+    </form>
+
+    <table id="listed-programs" class="clear">
+      <tr class="table-header">
+        <th class="delete">Löschen</th>
+        <th class="edit">Ändern</th>
+        <th class="title">Titel</th>
+        <th class="description">Beschreibung</th>
+        <th class="speaker none">Speaker</th>
+        <th class="speakername">Speaker Name</th>
+        <th class="startTime none">Start</th>
+        <th class="endTime none">Ende</th>
+      </tr>
+
+      {{#each programs}}
+        <tr class="table-body">
+          <td class="delete"><i class="material-icons md-20">delete</i></td>
+          <td class="edit"><i class="material-icons md-20">edit</i></td>
+          <td class="title">{{title}}</td>
+          <td class="description">{{description}}</td>
+          <td class="speaker none">{{speaker}}</td>
+          <td class="speakername">
+            {{#if programSpeaker}}
+              {{programSpeaker.name}}, {{programSpeaker.firstname}}
+            {{else}}
+              Redner wurde gelöscht!
+            {{/if}}
+          </td>
+          <td class="startTime none">{{startTime}}</td>
+          <td class="endTime none">{{endTime}}</td>
+        </tr>
+      {{/each}}
+
+    </table>
+
+  </div>
+  {{ > tooltips }}
 </template>

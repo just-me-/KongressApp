@@ -3,24 +3,41 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Speakers } from '../../../../imports/collections/speakers.js';
+import { Programs } from '../../../../imports/collections/programs.js';
 
-Template.admin_speaker.onCreated(function bodyOnCreated() {
+Template.admin_program.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('speakers');
+  Meteor.subscribe('programs');
 });
 
-Template.admin_speaker.onRendered(function(){
+Template.admin_program.onRendered(function() {
   autosize($('textarea'));
+  $('.datetimepicker').datetimepicker({
+    //format:'DD.MM.YYYY H:mm',
+    format:'MMMM DD, YYYY H:mm',
+    formatDate:'DD.MM.YYYY',
+    formatTime:'H:mm',
+    // inline:true,
+    lang:'de',
+    step: 30
+  });
 });
 
-Template.admin_speaker.helpers({
+Template.admin_program.helpers({
   speakers() {
     return Speakers.find({}, { sort: { createdAt: -1 } });
   },
+  programs() {
+    return Programs.find({}, { sort: { createdAt: -1 } });
+  },
+  programSpeaker() {
+    return Speakers.findOne(this.speaker);
+  }
 });
 
-Template.admin_speaker.events({
-  'submit form#save-speaker'(event) {
+Template.admin_program.events({
+  'submit form#save-program'(event) {
     // Prevent default browser form submit
     event.preventDefault();
 
@@ -29,7 +46,7 @@ Template.admin_speaker.events({
 
     // Validation
     var failed = false;
-    $('form#save-speaker').find('input').each(function(){
+    $('form#save-program').find('input').each(function(){
       // strip double spaces & leading + ending spaces
       $(this).val($(this).val().replace(/\s\s+/g, ' ').replace(/^\s+|\s+$/gm,''));
 
@@ -45,44 +62,43 @@ Template.admin_speaker.events({
       return;
     }
 
-    // Insert a speaker into the collection
-    var speakerData = {
-    	'name': target.name.value,
-      'firstname': target.firstname.value,
-      'login': target.login.value,
-      'password': target.password.value,
-      'description': target.description.value
+    // Insert a program into the collection
+    var programData = {
+    	'title': target.title.value,
+      'description': target.description.value,
+      'speaker': target.speaker.value,
+      'startTime': target.startTime.value,
+      'endTime': target.endTime.value,
     }
     // should there be an id => update; else => insert a new one
     if(target.id.value != ""){
-      Meteor.call('speakers.update', target.id.value, speakerData);
+      Meteor.call('programs.update', target.id.value, programData);
     } else {
-      Meteor.call('speakers.insert', speakerData);
+      Meteor.call('programs.insert', programData);
     }
 
     // show saved alert for x secounds
-    swal("Gespeichert!", target.firstname.value + " " + target.name.value + " wurde erfolgreich als Eintrag gespeichert.", "success")
+    swal("Gespeichert!", target.title.value + " wurde erfolgreich als Eintrag gespeichert.", "success")
 
     // Clear form
-    for (var key in speakerData){
+    for (var key in programData){
       eval("target." + key + ".value = ''");
     }
     target.id.value="";
   },
   'click #reset': function(){
     // remove id => the rest will handel html reset input
-    $('#save-speaker #id').val("");
+    $('#save-program #id').val("");
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
-    var copyInputs = ['name', 'firstname', 'login', 'description'];
+    var copyInputs = ['title', 'description', 'speaker', 'startTime', 'endTime'];
     for (input of copyInputs) {
-      eval(`$('#save-speaker #`+input+`').val(this.`+input+`)`);
+      eval(`$('#save-program #`+input+`').val(this.`+input+`)`);
     }
-    $('#save-speaker #password').val("");
-    $('#save-speaker #id').val(this._id);
+    $('#save-program #id').val(this._id);
   },
   'click td.delete': function(){
-    Meteor.call('speakers.remove', this._id);
+    Meteor.call('program.remove', this._id);
   }
 });

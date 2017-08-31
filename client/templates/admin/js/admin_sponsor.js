@@ -71,7 +71,6 @@ Template.admin_sponsor.events({
     // copy inputs & id for db => but not pw
     var copyInputs = ['name', 'url', 'time'];
     for (input of copyInputs) {
-      console.log(input);
       eval(`$('#save-sponsor #`+input+`').val(this.`+input+`)`);
     }
     $('#save-sponsor #id').val(this._id);

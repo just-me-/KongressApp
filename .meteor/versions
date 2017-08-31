@@ -29,6 +29,7 @@ ddp-rate-limiter@1.0.7
 ddp-server@2.0.0
 deps@1.0.12
 diff-sequence@1.0.7
+drewy:datetimepicker@1.0.3
 dynamic-import@0.1.1
 ecmascript@0.8.2
 ecmascript-runtime@0.4.1
@@ -72,6 +73,7 @@ mobile-experience@1.0.4
 mobile-status-bar@1.0.14
 modules@0.9.4
 modules-runtime@0.8.0
+momentjs:moment@2.8.4
 mongo@1.1.22
 mongo-id@1.0.6
 npm-bcrypt@0.9.3
@@ -87,6 +89,7 @@ reactive-dict@1.1.9
 reactive-var@1.0.11
 reload@1.1.11
 retry@1.0.9
+reywood:publish-composite@1.5.2
 routepolicy@1.0.12
 service-configuration@1.0.11
 session@1.1.7
