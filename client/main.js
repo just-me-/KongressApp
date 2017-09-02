@@ -1,8 +1,25 @@
+import { Programs } from '../imports/collections/programs.js';
+
 Meteor.startup(function(){
 
   // general
   Router.configure({
     notFoundTemplate: "404_notfound"
+  });
+
+  // backend pw protected
+  var myAdminHookFunction = function () {
+    // if (!Meteor.userId()) {
+    if (false) {
+      this.layout('layout_admin');
+      this.render('layout_admin_menu', {to: 'menu'});
+      this.render('admin_login');
+    } else {
+      this.next();
+    }
+  };
+  Router.onBeforeAction(myAdminHookFunction, {
+    only: ['admin_program', 'admin_speaker', 'admin_sponsor'],
   });
 
   // tmp home
@@ -11,11 +28,21 @@ Meteor.startup(function(){
   });
 
   // user sites
-  Router.route('/ask', function () {
+  Router.route('/ask/:program', function () {
     this.layout('layout_user');
     this.render('layout_user_menu', {to: 'menu'});
     this.render('layout_user_footer', {to: 'footer'});
-    this.render('user_addQuestion');
+    this.render('user_addQuestion', {
+      waitOn: function() {
+        return [
+          Meteor.subscribe('questions'),
+          Meteor.subscribe('programs')
+        ];
+      },
+      data: function () {
+        return Programs.findOne({_id: this.params.program});
+      }
+    });
   });
   Router.route('/program', function () {
     this.layout('layout_user');
@@ -47,12 +74,34 @@ Meteor.startup(function(){
   });
 
   // keynote sites
-  Router.route('/keynote');
+  Router.route('/keynote/:program', function () {
+    this.render('keynote', {
+      waitOn: function() {
+        return [
+          Meteor.subscribe('questions'),
+          Meteor.subscribe('programs')
+        ];
+      },
+      data: function () {
+        return Programs.findOne({_id: this.params.program});
+      }
+    });
+  });
   Router.route('/keynote_login', function () {
     this.render('keynote_login');
   });
-  Router.route('/keynote_mod', function () {
-    this.render('keynote_mod');
+  Router.route('/keynote_mod/:program', function () {
+    this.render('keynote_mod', {
+      waitOn: function() {
+        return [
+          Meteor.subscribe('questions'),
+          Meteor.subscribe('programs')
+        ];
+      },
+      data: function () {
+        return Programs.findOne({_id: this.params.program});
+      }
+    });
   });
   Router.route('/keynote_answers', function () {
     this.render('keynote_answers');

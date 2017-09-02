@@ -1,3 +1,19 @@
 <template name="keynote">
-    <h1>Keynote</h1>
+
+  {{#if title}}
+    <h1>Keynote: {{title}}</h1>
+
+    <h2>Stellt Eure Fragen: url.ch/blabla</h2>
+    <div id="keynote_questions">
+    {{#each questions}}
+      <div class="question">
+      Frage: {{question}}
+      </div>
+    {{/each}}
+    </div>
+
+  {{else}}
+    <h1>Keine Keynote gefunden! Prüfe Deine Link-Eingabe...</h1>
+  {{/if}}
+
 </template>
