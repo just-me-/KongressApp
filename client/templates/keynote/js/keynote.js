@@ -13,6 +13,6 @@ Template.keynote.onCreated(function bodyOnCreated() {
 
 Template.keynote.helpers({
   questions() {
-    return Questions.find({program: Template.instance().data._id}, { sort: { lastChange: -1 } });
+    return Questions.find({program: Template.instance().data._id, status: "live"}, { sort: { lastChange: -1 } });
   },
 });

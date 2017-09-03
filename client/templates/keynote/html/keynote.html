@@ -1,15 +1,19 @@
 <template name="keynote">
 
   {{#if title}}
-    <h1>Keynote: {{title}}</h1>
+    <div id="live_keynote">
 
-    <h2>Stellt Eure Fragen: url.ch/blabla</h2>
-    <div id="keynote_questions">
-    {{#each questions}}
-      <div class="question">
-      Frage: {{question}}
+      <h1>Keynote: {{title}}</h1>
+
+      <h2>Stellt Eure Fragen: url.ch/blabla</h2>
+      <div id="keynote_questions">
+      {{#each questions}}
+        <div class="question card">
+        Frage: {{question}}
+        </div>
+      {{/each}}
       </div>
-    {{/each}}
+
     </div>
 
   {{else}}

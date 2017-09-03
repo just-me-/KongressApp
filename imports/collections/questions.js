@@ -15,7 +15,7 @@ var Schema =  new SimpleSchema({
     optional: true
   },
   status: {
-    type: String
+    type: String // new nice live crap
   },
   createdAt: {
     type: Date
@@ -46,8 +46,6 @@ Meteor.methods({
   'questions.update'(taskId, questionData) {
     check(taskId, String);
 
-    const sponsor = Sponsors.findOne(taskId);
-
     Questions.update(taskId, {
       $set: {
         question: questionData['question'],
@@ -60,4 +58,15 @@ Meteor.methods({
 
     Questions.remove(taskId);
   },
+  'questions.changeStatus'(taskId, status) {
+    check(taskId, String);
+    if (status.match(/^(new|nice|live|crap)$/)) {
+      Questions.update(taskId, {
+        $set: {
+          status: status,
+          lastChange: new Date(),
+        },
+      });
+    }
+  }
 });

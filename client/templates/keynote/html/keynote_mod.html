@@ -1,17 +1,81 @@
 <template name="keynote_mod">
     {{#if title}}
-      <h1>Keynote Mod: {{title}}</h1>
+
+      <div id="mod_menu">
+        <h1>Keynote Mod: {{title}}</h1>
+      </div>
+
+      <div id="mod_content">
+        <div id="new" class="question-3 scroll">
+          <h2>New</h2>
+          {{#each new_questions}}
+            <div class="question">
+              <div class="text">{{question}}</div>
+              <div class="icons">
+                <i class="add_nice material-icons md-20">favorite</i>
+                <i class="add_crap material-icons md-20">delete</i>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <div id="nice" class="question-3 scroll">
+          <h2>Nice</h2>
+          {{#each nice_questions}}
+            <div class="question">
+              <div class="text">{{question}}</div>
+              <div class="icons">
+                <i class="add_live material-icons md-20">tv</i>
+                <i class="add_crap material-icons md-20">delete</i>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <div id="live" class="question-3">
+          <div class="question-50 scroll">
+            <h2>Live</h2>
+            {{#each live_questions}}
+              <div class="question">
+                <div class="text">{{question}}</div>
+                <div class="icons">
+                  <i class="add_nice material-icons md-20">favorite</i>
+                  <i class="add_crap material-icons md-20">delete</i>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+          <div id="crap" class="question-50 scroll">
+            <h2>Crap</h2>
+            {{#each crap_questions}}
+              <div class="question">
+                <div class="text">{{question}}</div>
+                <div class="icons">
+                  <i class="add_live material-icons md-20">tv</i>
+                  <i class="add_nice material-icons md-20">favorite</i>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div id="demo">
+        <div id="no-drop" class="draggable drag-drop"> #no-drop </div>
+
+        <div id="yes-drop" class="draggable drag-drop"> #yes-drop </div>
+
+        <div id="outer-dropzone" class="dropzone">
+        #outer-dropzone
+        <div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
+        </div>
+      </div>
+
 
       <div id="keynote_questions">
-      {{#each questions}}
-        <div class="question">
-        Frage: {{question}}
-        </div>
-      {{/each}}
+
       </div>
 
     {{else}}
       <h1>Keine Keynote gefunden! Prüfe Deine Link-Eingabe...</h1>
     {{/if}}
-    
+
 </template>

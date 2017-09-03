@@ -23,6 +23,7 @@ p {
 .clear {clear: both;}
 .hidden {visibility: hidden;}
 .none {display: none;}
+.scroll {overflow:scroll;}
 
 /* material icons */
 // sizing
@@ -54,6 +55,11 @@ textarea {
      border: solid 1px #707070;
      box-shadow: 0 0 5px 1px #969696;
    }
+}
+select {
+  font-size: 16px;
+  color: #212529;
+  width: 365px;
 }
 textarea {
   min-height: 60px;
@@ -276,11 +282,62 @@ form.card {
 /* ************** */
 /* keynote screen */
 /* ************** */
-
-
-
-
-
+#mod_menu {
+  height: 10vh;
+  // background: green;
+}
+#mod_content {
+  h2 {
+    color: #fff;
+    text-align: center;
+  }
+  .question-3 {
+    // background: red;
+    height: 90vh;
+    float: left;
+    width: 33%;
+    overflow: scroll;
+  }
+  .question-50 {
+    height: 50%;
+  }
+  .question {
+    margin: 5px 2px;
+    padding: 5px 10px;
+    background-color: rgba(228, 228, 228, 0.7);
+    border-radius: 10px;
+    overflow: auto;
+    .text {
+      float: left;
+    }
+    .icons {
+      float: right;
+      & > i {
+        cursor: pointer;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+#live_keynote {
+  h1 {
+    font-size: 3em;
+    color: #fff;
+  }
+  h2 {
+    font-size: 2em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .question {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 20px 25px;
+    border-radius: 35px;
+    margin: 10px 20px 20px;
+    text-align: center
+  }
+}
 
 
 // mby for later
@@ -317,4 +374,58 @@ h1 {
 
 @media (max-width: 600px) {
 
+}
+
+
+
+
+// DROP ZONE
+
+
+#outer-dropzone {
+  height: 140px;
+}
+
+#inner-dropzone {
+  height: 80px;
+}
+
+.dropzone {
+  background-color: #ccc;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 80%;
+  transition: background-color 0.3s;
+}
+
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  background-color: #29e;
+  border-color: #fff;
+  border-style: solid;
+}
+
+.drag-drop {
+  display: inline-block;
+  min-width: 40px;
+  padding: 2em 0.5em;
+
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #4e4;
 }
