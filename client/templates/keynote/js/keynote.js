@@ -15,4 +15,8 @@ Template.keynote.helpers({
   questions() {
     return Questions.find({program: Template.instance().data._id, status: "live"}, { sort: { lastChange: -1 } });
   },
+  currentURL() {
+    var link = Meteor.absoluteUrl().replace(/^https?\:\/\//i, "")+Iron.Location.get().path;;
+    return link.replace(/\/keynote/i, 'ask');
+  }
 });
