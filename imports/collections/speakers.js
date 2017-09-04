@@ -10,11 +10,35 @@ var Schema =  new SimpleSchema({
   firstname: {
     type: String
   },
-  login: {
+  description: {
     type: String,
     optional: true
   },
-  password: {
+  email: {
+    type: String,
+    optional: true
+  },
+  phone: {
+    type: String,
+    optional: true
+  },
+  website: {
+    type: String,
+    optional: true
+  },
+  img_url: {
+    type: String,
+    optional: true
+  },
+  address: {
+    type: String,
+    optional: true
+  },
+  zip: {
+    type: String,
+    optional: true
+  },
+  city: {
     type: String,
     optional: true
   },
@@ -43,32 +67,32 @@ Meteor.methods({
     Speakers.insert({
       name: speakerData['name'],
       firstname: speakerData['firstname'],
-      login: speakerData['login'],
-      password: encrypt(speakerData['password']),
       description: speakerData['description'],
+      email: speakerData['email'],
+      phone: speakerData['phone'],
+      website: speakerData['website'],
+      address: speakerData['address'],
+      img_url: speakerData['img_url'],
+      zip: speakerData['zip'],
+      city: speakerData['city'],
       createdAt: new Date(),
     });
   },
   'speakers.update'(taskId, speakerData) {
     check(taskId, String);
 
-    const speaker = Speakers.findOne(taskId);
-
-    // only update pw if changed
-    if(speakerData['password'] != ""){
-      Speakers.update(taskId, {
-        $set: {
-          password: encrypt(speakerData['password']),
-        },
-      });
-    }
-
     Speakers.update(taskId, {
       $set: {
         name: speakerData['name'],
         firstname: speakerData['firstname'],
-        login: speakerData['login'],
         description: speakerData['description'],
+        email: speakerData['email'],
+        phone: speakerData['phone'],
+        website: speakerData['website'],
+        address: speakerData['address'],
+        img_url: speakerData['img_url'],
+        zip: speakerData['zip'],
+        city: speakerData['city'],
         lastChange: new Date(),
       },
     });
@@ -78,14 +102,4 @@ Meteor.methods({
 
     Speakers.remove(taskId);
   },
-  'speakers.checkPassword'(password) {
-    var cryptedPW = encrypt(password);
-    // ...
-    // 2Do for login mechanism
-    return true;
-  },
 });
-
-function encrypt(string) {
-  return CryptoJS.SHA256(string).toString();
-}

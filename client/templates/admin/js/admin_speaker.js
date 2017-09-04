@@ -49,9 +49,14 @@ Template.admin_speaker.events({
     var speakerData = {
     	'name': target.name.value,
       'firstname': target.firstname.value,
-      'login': target.login.value,
-      'password': target.password.value,
-      'description': target.description.value
+      'description': target.description.value,
+      'email': target.email.value,
+      'phone': target.phone.value,
+      'website': target.website.value,
+      'address': target.address.value,
+      'img_url': target.img_url.value,
+      'zip': target.zip.value,
+      'city': target.city.value
     }
     // should there be an id => update; else => insert a new one
     if(target.id.value != ""){
@@ -75,11 +80,10 @@ Template.admin_speaker.events({
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
-    var copyInputs = ['name', 'firstname', 'login', 'description'];
+    var copyInputs = ['name', 'firstname', 'description', 'email', 'phone', 'description', 'website', 'address', 'img_url', 'zip', 'city'];
     for (input of copyInputs) {
       eval(`$('#save-speaker #`+input+`').val(this.`+input+`)`);
     }
-    $('#save-speaker #password').val("");
     $('#save-speaker #id').val(this._id);
   },
   'click td.delete': function(){

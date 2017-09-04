@@ -12,20 +12,38 @@
           <label for="firstname">Vorname *</label>
           <input id="firstname" name="firstname" type="text" required />
         </div>
-        <div id="div-login">
-          <label for="login">Login</label>
-          <input id="login" name="login" type="text" />
-          <i class="material-icons helpicon" data-tooltip="Login-Name für die Keynote-Zugangsdaten">help</i>
-        </div>
-        <div id="div-password">
-          <label for="password">Passwort</label>
-          <input id="password" name="password" type="password" />
-          <i class="material-icons helpicon" data-tooltip="Passwort für das Login">help</i>
-        </div>
         <div id="div-description">
           <label for="description">Beschreibung</label>
           <textarea id="description" name="text"></textarea>
           <i class="material-icons helpicon" data-tooltip="Fügen Sie eine Beschreibung für den Redner hinzu.">help</i>
+        </div>
+        <div id="div-email">
+          <label for="email">E-Mail</label>
+          <input id="email" name="email" type="text" />
+        </div>
+        <div id="div-phone">
+          <label for="phone">Tel.</label>
+          <input id="phone" name="phone" type="text" />
+        </div>
+        <div id="div-website">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" />
+        </div>
+        <div id="div-address">
+          <label for="address">Adresse</label>
+          <input id="address" name="address" type="text" />
+        </div>
+        <div id="div-img_url">
+          <label for="img_url">Bild URL</label>
+          <input id="img_url" name="img_url" type="text" />
+        </div>
+        <div id="div-zip">
+          <label for="zip">PLZ</label>
+          <input id="zip" name="zip" type="text" />
+        </div>
+        <div id="div-city">
+          <label for="city">Ort</label>
+          <input id="city" name="city" type="text" />
         </div>
         <div id="div-buttons" class="clear">
           <input id="id" name="id" type="hidden" value="">
@@ -41,8 +59,14 @@
           <th class="edit">Ändern</th>
           <th class="name">Name</th>
           <th class="firstname">Vorname</th>
-          <th class="login">Login</th>
-          <th class="description">Beschreibung</th>
+          <th class="description none">Beschreibung</th>
+          <th class="email">E-Mail</th>
+          <th class="phone">Tel.</th>
+          <th class="website">Website</th>
+          <th class="img_url none">Bild URL</th>
+          <th class="address none">Adresse</th>
+          <th class="zip none">PLZ</th>
+          <th class="city none">City</th>
         </tr>
 
         {{#each speakers}}
@@ -62,7 +86,13 @@
     <td class="edit"><i class="material-icons md-20">edit</i></td>
     <td class="name">{{name}}</td>
     <td class="firstname">{{firstname}}</td>
-    <td class="login">{{login}}</td>
-    <td class="description">{{description}}</td>
+    <td class="description none">{{description}}</td>
+    <td class="email">{{email}}</td>
+    <td class="phone">{{phone}}</td>
+    <td class="website">{{website}}</td>
+    <td class="img_url none">{{img_url}}</td>
+    <td class="address none">{{address}}</td>
+    <td class="zip none">{{zip}}</td>
+    <td class="city none">{{city}}</td>
   </tr>
 </template>

@@ -1,5 +1,6 @@
 import { Programs } from '../imports/collections/programs.js';
 
+// just for routing 
 Meteor.startup(function(){
 
   // general
