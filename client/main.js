@@ -7,21 +7,6 @@ Meteor.startup(function(){
     notFoundTemplate: "404_notfound"
   });
 
-  // backend pw protected
-  var myAdminHookFunction = function () {
-    // if (!Meteor.userId()) {
-    if (false) {
-      this.layout('layout_admin');
-      this.render('layout_admin_menu', {to: 'menu'});
-      this.render('admin_login');
-    } else {
-      this.next();
-    }
-  };
-  Router.onBeforeAction(myAdminHookFunction, {
-    only: ['admin_program', 'admin_speaker', 'admin_sponsor'],
-  });
-
   // tmp home
   Router.route('/', function () {
     this.render('home');
@@ -52,11 +37,6 @@ Meteor.startup(function(){
   });
 
   // admin sites
-  Router.route('/login', function () {
-    this.layout('layout_admin');
-    this.render('layout_admin_menu', {to: 'menu'});
-    this.render('admin_login');
-  });
   Router.route('/admin_program', function () {
     this.layout('layout_admin');
     this.render('layout_admin_menu', {to: 'menu'});
@@ -87,9 +67,6 @@ Meteor.startup(function(){
       }
     });
   });
-  Router.route('/keynote_login', function () {
-    this.render('keynote_login');
-  });
   Router.route('/keynote_mod/:program', function () {
     this.render('keynote_mod', {
       waitOn: function() {
@@ -115,11 +92,6 @@ Meteor.startup(function(){
         return Programs.findOne({shortlink: this.params.program});
       }
     });
-  });
-
-  // tmp
-  Router.route('/tutorial', function () {
-    this.render('tutorial');
   });
 
 });
