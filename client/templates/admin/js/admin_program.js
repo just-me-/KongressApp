@@ -65,6 +65,7 @@ Template.admin_program.events({
     // Insert a program into the collection
     var programData = {
     	'title': target.title.value,
+      'shortlink': target.shortlink.value,
       'description': target.description.value,
       'speaker': target.speaker.value,
       'startTime': target.startTime.value,
@@ -92,13 +93,13 @@ Template.admin_program.events({
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
-    var copyInputs = ['title', 'description', 'speaker', 'startTime', 'endTime'];
+    var copyInputs = ['title', 'shortlink', 'description', 'speaker', 'startTime', 'endTime'];
     for (input of copyInputs) {
       eval(`$('#save-program #`+input+`').val(this.`+input+`)`);
     }
     $('#save-program #id').val(this._id);
   },
   'click td.delete': function(){
-    Meteor.call('program.remove', this._id);
+    Meteor.call('programs.remove', this._id);
   }
 });

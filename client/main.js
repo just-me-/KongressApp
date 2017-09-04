@@ -40,7 +40,7 @@ Meteor.startup(function(){
         ];
       },
       data: function () {
-        return Programs.findOne({_id: this.params.program});
+        return Programs.findOne({shortlink: this.params.program});
       }
     });
   });
@@ -83,7 +83,7 @@ Meteor.startup(function(){
         ];
       },
       data: function () {
-        return Programs.findOne({_id: this.params.program});
+        return Programs.findOne({shortlink: this.params.program});
       }
     });
   });
@@ -99,7 +99,7 @@ Meteor.startup(function(){
         ];
       },
       data: function () {
-        return Programs.findOne({_id: this.params.program});
+        return Programs.findOne({shortlink: this.params.program});
       }
     });
   });

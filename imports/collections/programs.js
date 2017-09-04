@@ -14,6 +14,10 @@ var Schema =  new SimpleSchema({
     type: String,
     optional: true
   },
+  shortlink: {
+    type: String,
+    unique: true
+  },
   speaker: {
     type: String
   },
@@ -34,7 +38,6 @@ var Schema =  new SimpleSchema({
     type: Date,
     optional: true
   }
-  // short link ?
 });
 Programs.attachSchema(Schema);
 
@@ -58,6 +61,7 @@ Meteor.methods({
     Programs.insert({
       title: programData['title'],
       description: programData['description'],
+      shortlink: programData['shortlink'],
       speaker: programData['speaker'],
       startTime: new Date(programData['startTime']),
       endTime: new Date(programData['endTime']),
@@ -73,6 +77,7 @@ Meteor.methods({
       $set: {
         title: programData['title'],
         description: programData['description'],
+        shortlink: programData['shortlink'],
         speaker: programData['speaker'],
         startTime: new Date(programData['startTime']),
         endTime: new Date(programData['endTime']),

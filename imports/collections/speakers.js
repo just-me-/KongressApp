@@ -75,7 +75,7 @@ Meteor.methods({
   },
   'speakers.remove'(taskId) {
     check(taskId, String);
-    
+
     Speakers.remove(taskId);
   },
   'speakers.checkPassword'(password) {

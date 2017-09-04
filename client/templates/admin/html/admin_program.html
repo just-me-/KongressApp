@@ -8,6 +8,11 @@
         <label for="title">Titel *</label>
         <input id="title" name="title" type="text" required />
       </div>
+      <div id="div-shortlink">
+        <label for="shortlink">Referenz *</label>
+        <input id="shortlink" name="shortlink" type="text" required />
+        <i class="material-icons helpicon" data-tooltip="Daraus wird der Link für das Publikum generiert.">help</i>
+      </div>
       <div id="div-description">
         <label for="description">Beschreibung</label>
         <textarea id="description" name="text"></textarea>
@@ -42,6 +47,7 @@
       <tr class="table-header">
         <th class="delete">Löschen</th>
         <th class="edit">Ändern</th>
+        <th class="shortlink">Referenz</th>
         <th class="title">Titel</th>
         <th class="description">Beschreibung</th>
         <th class="speaker none">Speaker</th>
@@ -54,6 +60,7 @@
         <tr class="table-body">
           <td class="delete"><i class="material-icons md-20">delete</i></td>
           <td class="edit"><i class="material-icons md-20">edit</i></td>
+          <td class="shwortlink">{{shortlink}}</td>
           <td class="title">{{title}}</td>
           <td class="description">{{description}}</td>
           <td class="speaker none">{{speaker}}</td>
