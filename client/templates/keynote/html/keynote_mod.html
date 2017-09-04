@@ -32,7 +32,7 @@
 
       <div id="mod_content">
         <div id="new" class="question-3 scroll">
-          <h2>New</h2>
+          <h2 data-tooltip="Alle neu erstellten Fragen werden in diesem Bereich aufgelistet. Neue Fragen können nur erstellt werden, wenn die Session gestartet ist.">New</h2>
           {{#each new_questions}}
             <div class="question">
               <div class="text">{{question}}</div>
@@ -44,7 +44,7 @@
           {{/each}}
         </div>
         <div id="nice" class="question-3 scroll">
-          <h2>Nice</h2>
+          <h2 data-tooltip="Dieser Bereich dient Ihnen als Zwischenspeicher. Sortieren Sie Fragen, die Ihnen gefallen, hier hin aus. Fragen, die Sie später beantworten wollen, müssen in diesem Bereich sein.">Nice</h2>
           {{#each nice_questions}}
             <div class="question">
               <div class="text">{{question}}</div>
@@ -57,7 +57,7 @@
         </div>
         <div id="live" class="question-3">
           <div class="question-50 scroll">
-            <h2>Live</h2>
+            <h2 data-tooltip="Alle hier vorhandenen Fragen werden auf der Keynote angezeigt.">Live</h2>
             {{#each live_questions}}
               <div class="question">
                 <div class="text">{{question}}</div>
@@ -69,7 +69,7 @@
             {{/each}}
           </div>
           <div id="crap" class="question-50 scroll">
-            <h2>Crap</h2>
+            <h2 data-tooltip="Alle aussortierten Fragen, die als nicht gut befunden oder beantwortet wurden, sind in diesem Bereich.">Crap</h2>
             {{#each crap_questions}}
               <div class="question">
                 <div class="text">{{question}}</div>
@@ -103,4 +103,5 @@
       <h1>Keine Keynote gefunden! Prüfe Deine Link-Eingabe...</h1>
     {{/if}}
 
+    {{ > tooltips }}
 </template>
