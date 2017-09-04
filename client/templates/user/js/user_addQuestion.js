@@ -12,7 +12,10 @@ Template.user_addQuestion.onCreated(function bodyOnCreated() {
 });
 
 Template.user_addQuestion.onRendered(function(){
-  autosize($('textarea'));
+  // template logic needs a delay
+  setTimeout( function(){
+    autosize($('textarea'));
+  }  , 500 );
 });
 
 

@@ -103,8 +103,18 @@ Meteor.startup(function(){
       }
     });
   });
-  Router.route('/keynote_answers', function () {
-    this.render('keynote_answers');
+  Router.route('/keynote_answers/:program', function () {
+    this.render('keynote_answers', {
+      waitOn: function() {
+        return [
+          Meteor.subscribe('questions'),
+          Meteor.subscribe('programs')
+        ];
+      },
+      data: function () {
+        return Programs.findOne({shortlink: this.params.program});
+      }
+    });
   });
 
   // tmp

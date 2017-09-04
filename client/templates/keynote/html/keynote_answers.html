@@ -1,3 +1,18 @@
 <template name="keynote_answers">
-    <h1>Keynote Q & A</h1>
+  <div id="keynote_answers" class="overflow card">
+  {{#if title}}
+    <h1>Keynote {{title}} Q & A</h1>
+
+    {{#each questions}}
+      <div id="{{_id}}" class="answer_questions overflow">
+        <textarea class="question" name="text">{{question}}</textarea>
+        <textarea class="answer" name="text" placeholder="Beantworten Sie die Frage...">{{answer}}</textarea>
+        <input class="save button" name="save" value="Speichern">
+      </div>
+    {{/each}}
+
+    {{else}}
+      <h1>Keine Keynote gefunden! Prüfe Deine Link-Eingabe...</h1>
+    {{/if}}
+  </div>
 </template>

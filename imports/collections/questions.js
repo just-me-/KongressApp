@@ -7,6 +7,10 @@ var Schema =  new SimpleSchema({
   question: {
     type: String
   },
+  answer: {
+    type: String,
+    optional: true
+  },
   program: {
     type: String
   },
@@ -58,8 +62,19 @@ Meteor.methods({
 
     Questions.remove(taskId);
   },
+  'questions.saveAnswer'(taskId, questionData) {
+    check(taskId, String);
+
+    Questions.update(taskId, {
+      $set: {
+        question: questionData['question'],
+        answer: questionData['answer']
+      },
+    });
+  },
   'questions.changeStatus'(taskId, status) {
     check(taskId, String);
+
     if (status.match(/^(new|nice|live|crap)$/)) {
       Questions.update(taskId, {
         $set: {
