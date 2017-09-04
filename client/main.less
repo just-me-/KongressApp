@@ -24,6 +24,7 @@ p {
 .hidden {visibility: hidden;}
 .none {display: none;}
 .scroll {overflow:scroll;}
+.overflow {overflow: auto;}
 
 /* material icons */
 // sizing
@@ -284,7 +285,31 @@ form.card {
 /* ************** */
 #mod_menu {
   height: 10vh;
-  // background: green;
+  background-color: rgba(228, 228, 228, 0.7);
+  #button_group {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    #start_session i {
+        color: #17B287;
+    }
+    #stop_session i {
+        color: #E04F5F;
+    }
+  }
+  .mod_button {
+    margin-left: 25px;
+    cursor: pointer;
+    span {
+      display: block;
+      float: right;
+      padding: 1px 0 0 5px;
+    }
+    a {
+      color: black;
+    }
+  }
 }
 #mod_content {
   h2 {

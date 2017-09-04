@@ -4,16 +4,21 @@
 
     <form id="save-question" class="clear card">
 
-      <h1>Event: {{title}}</h1>
+      {{#if isLive}}
+        <h1>Event: {{title}}</h1>
 
-      <div id="div-question">
-        <textarea id="question" name="text" placeholder="Stelle Deine Frage..."></textarea>
-      </div>
+        <div id="div-question">
+          <textarea id="question" name="text" placeholder="Stelle Deine Frage..."></textarea>
+        </div>
 
-      <div id="div-buttons" class="clear">
-        <input id="program" name="program" type="hidden" value="{{_id}}">
-        <input id="save" name="save" type="submit" value="Absenden" class="button">
-      </div>
+        <div id="div-buttons" class="clear">
+          <input id="program" name="program" type="hidden" value="{{_id}}">
+          <input id="save" name="save" type="submit" value="Absenden" class="button">
+        </div>
+
+      {{else}}
+        <h1>Für das Event {{title}} läuft im Moment keine Frage-Session. Bitte versuche es später nochmals.</h1>
+      {{/if}}
 
     </form>
 

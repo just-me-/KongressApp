@@ -104,6 +104,14 @@ Template.keynote_mod.helpers({
 
 
 Template.keynote_mod.events({
+  // menu bar
+  'click #button_group #start_session': function(){
+    Meteor.call('programs.changeStatus', Template.instance().data._id, true);
+  },
+  'click #button_group #stop_session': function(){
+    Meteor.call('programs.changeStatus', Template.instance().data._id, false);
+  },
+  // move questions
   'click .question i.add_nice': function(){
     Meteor.call('questions.changeStatus', this._id, 'nice');
   },

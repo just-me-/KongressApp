@@ -1,8 +1,33 @@
 <template name="keynote_mod">
     {{#if title}}
 
-      <div id="mod_menu">
+      <div id="mod_menu" class="overflow">
         <h1>Keynote Mod: {{title}}</h1>
+        <div id="button_group">
+          {{#if isLive}}
+          <div id="stop_session" class="mod_button left">
+            <i class="material-icons md-20">pause_circle_filled</i>
+            <span>End Session</span>
+          </div>
+          {{else}}
+          <div id="start_session" class="mod_button left">
+            <i class="material-icons md-20">play_circle_filled</i>
+            <span>Start Session</span>
+          </div>
+          {{/if}}
+          <div id="open_keynote" class="mod_button left">
+            <a href="/keynote/{{shortlink}}" target=_blank>
+              <i class="material-icons md-20">open_in_new</i>
+              <span>Präsentations-Tab</span>
+            </a>
+          </div>
+          <div id="open_qna" class="mod_button left">
+            <a href="/keynote_answers/{{shortlink}}" target=_blank>
+              <i class="material-icons md-20">question_answer</i>
+              <span>Q & A Tab</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <div id="mod_content">

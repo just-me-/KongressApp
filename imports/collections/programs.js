@@ -71,8 +71,6 @@ Meteor.methods({
   'programs.update'(taskId, programData) {
     check(taskId, String);
 
-    const program = Programs.findOne(taskId);
-
     Programs.update(taskId, {
       $set: {
         title: programData['title'],
@@ -81,6 +79,16 @@ Meteor.methods({
         speaker: programData['speaker'],
         startTime: new Date(programData['startTime']),
         endTime: new Date(programData['endTime']),
+        lastChange: new Date(),
+      },
+    });
+  },
+  'programs.changeStatus'(taskId, status) {
+    check(taskId, String);
+    
+    Programs.update(taskId, {
+      $set: {
+        isLive: status,
         lastChange: new Date(),
       },
     });
