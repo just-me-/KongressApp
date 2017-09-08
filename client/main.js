@@ -1,6 +1,6 @@
 import { Programs } from '../imports/collections/programs.js';
 
-// just for routing 
+// just for routing
 Meteor.startup(function(){
 
   // general
@@ -35,6 +35,24 @@ Meteor.startup(function(){
     this.render('layout_user_menu', {to: 'menu'});
     this.render('layout_user_footer', {to: 'footer'});
     this.render('user_program');
+  });
+  Router.route('/whatslive', function () {
+    this.layout('layout_user');
+    this.render('layout_user_menu', {to: 'menu'});
+    this.render('layout_user_footer', {to: 'footer'});
+    this.render('user_whatslive');
+  });
+  Router.route('/speakers', function () {
+    this.layout('layout_user');
+    this.render('layout_user_menu', {to: 'menu'});
+    this.render('layout_user_footer', {to: 'footer'});
+    this.render('user_speakers');
+  });
+  Router.route('/sponsors', function () {
+    this.layout('layout_user');
+    this.render('layout_user_menu', {to: 'menu'});
+    this.render('layout_user_footer', {to: 'footer'});
+    this.render('user_sponsors');
   });
 
   // admin sites

@@ -1,0 +1,15 @@
+<template name="user_sponsors">
+    <h1>Sponsoren</h1>
+
+    <div id="user_sponsors">
+      {{#each sponsors}}
+      <div class="sponsor card">
+        <a href="{{website}}" target=_blank>
+          <img src="{{url}}" alt="{{name}}">
+          <h2>{{name}}</h2>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+
+</template>
