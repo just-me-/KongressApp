@@ -1,5 +1,4 @@
 <template name="keynote">
-
   {{#if title}}
     <div id="live_keynote">
 
@@ -14,10 +13,65 @@
       {{/each}}
       </div>
 
+
+      <!-- Slider container -->
+      <div id="buttom_cards">
+
+        <div id="left" class="swiper-container">
+            <div class="swiper-wrapper">
+                {{#each sponsors}}
+                  {{#if time}}
+                    <div class="swiper-slide"  data-swiper-autoplay="{{time}}000">
+                        <img src="{{url}}" alt="{{name}}">
+                    </div>
+                  {{else}}
+                    <div class="swiper-slide">
+                        <img src="{{url}}" alt="{{name}}">
+                    </div>
+                  {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div id="middle" class="swiper-container">
+            <div class="swiper-wrapper">
+                {{#each sponsors}}
+                  {{#if time}}
+                    <div class="swiper-slide"  data-swiper-autoplay="{{time}}000">
+                        <img src="{{url}}" alt="{{name}}">
+                    </div>
+                  {{else}}
+                    <div class="swiper-slide">
+                        <img src="{{url}}" alt="{{name}}">
+                    </div>
+                  {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div id="right" class="swiper-container">
+            <div class="swiper-wrapper">
+                {{#each sponsors}}
+                  {{#if time}}
+                    <div class="swiper-slide"  data-swiper-autoplay="{{time}}000">
+                        <img src="{{url}}" alt="{{name}}">
+                    </div>
+                  {{else}}
+                    <div class="swiper-slide">
+                        <img src="{{url}}" alt="{{name}}">
+                    </div>
+                  {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+      </div>
+
     </div>
 
   {{else}}
     <h1>Keine Keynote gefunden! Prüfe Deine Link-Eingabe...</h1>
   {{/if}}
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
 </template>
