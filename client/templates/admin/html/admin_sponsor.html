@@ -13,6 +13,10 @@
         <input id="url" name="url" type="text" required />
         <i class="material-icons helpicon" data-tooltip="Das Logo des Sponsors, welches angezeigt werden soll.">help</i>
       </div>
+      <div id="div-website">
+        <label for="website">Website</label>
+        <input id="website" name="website" type="text" />
+      </div>
       <div id="div-time">
         <label for="time">Anzeigedauer (in s)</label>
         <input id="time" name="time" type="text" />
@@ -31,6 +35,7 @@
         <th class="delete">Löschen</th>
         <th class="edit">Ändern</th>
         <th class="name">Name</th>
+        <th class="website">Website</th>
         <th class="url none">Bild URL</th>
         <th class="img">Bild</th>
         <th class="time">Anzeigedauer</th>
@@ -52,6 +57,7 @@
     <td class="delete"><i class="material-icons md-20">delete</i></td>
     <td class="edit"><i class="material-icons md-20">edit</i></td>
     <td class="name">{{name}}</td>
+    <td class="website">{{website}}</td>
     <td class="url none">{{url}}</td>
     <td class="img"><img src="{{url}}" alt="Logo"></td>
     <td class="time">

@@ -10,6 +10,10 @@ var Schema =  new SimpleSchema({
   url: {
     type: String
   },
+  website: {
+    type: String,
+    optional: true,
+  },
   time: {
     type: Number,
     optional: true,
@@ -38,19 +42,19 @@ Meteor.methods({
       name: sponsorData['name'],
       url: sponsorData['url'],
       time: sponsorData['time'],
+      website: sponsorData['website'],
       createdAt: new Date(),
     });
   },
   'sponsors.update'(taskId, sponsorData) {
     check(taskId, String);
 
-    const sponsor = Sponsors.findOne(taskId);
-
     Sponsors.update(taskId, {
       $set: {
         name: sponsorData['name'],
         url: sponsorData['url'],
         time: sponsorData['time'],
+        website: sponsorData['website'],
         lastChange: new Date(),
       },
     });

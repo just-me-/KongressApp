@@ -46,6 +46,7 @@ Template.admin_sponsor.events({
     	'name': target.name.value,
       'url': target.url.value,
       'time': target.time.value,
+      'website': target.website.value,
     }
     // should there be an id => update; else => insert a new one
     if(target.id.value != ""){
@@ -69,7 +70,7 @@ Template.admin_sponsor.events({
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
-    var copyInputs = ['name', 'url', 'time'];
+    var copyInputs = ['name', 'url', 'time', 'website'];
     for (input of copyInputs) {
       eval(`$('#save-sponsor #`+input+`').val(this.`+input+`)`);
     }
