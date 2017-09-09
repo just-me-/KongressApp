@@ -21,6 +21,9 @@ var Schema =  new SimpleSchema({
   speaker: {
     type: String
   },
+  room: {
+    type: String
+  },
   startTime: {
     type: Date,
   },
@@ -63,6 +66,7 @@ Meteor.methods({
       description: programData['description'],
       shortlink: programData['shortlink'],
       speaker: programData['speaker'],
+      room: programData['room'],
       startTime: new Date(programData['startTime']),
       endTime: new Date(programData['endTime']),
       createdAt: new Date(),
@@ -77,6 +81,7 @@ Meteor.methods({
         description: programData['description'],
         shortlink: programData['shortlink'],
         speaker: programData['speaker'],
+        room: programData['room'],
         startTime: new Date(programData['startTime']),
         endTime: new Date(programData['endTime']),
         lastChange: new Date(),
@@ -85,7 +90,7 @@ Meteor.methods({
   },
   'programs.changeStatus'(taskId, status) {
     check(taskId, String);
-    
+
     Programs.update(taskId, {
       $set: {
         isLive: status,

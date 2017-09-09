@@ -36,6 +36,23 @@ Meteor.startup(function(){
     this.render('layout_user_footer', {to: 'footer'});
     this.render('user_program');
   });
+  Router.route('/details/:program', function () {
+    this.layout('layout_user');
+    this.render('layout_user_menu', {to: 'menu'});
+    this.render('layout_user_footer', {to: 'footer'});
+    this.render('user_programDetails', {
+      waitOn: function() {
+        return [
+          Meteor.subscribe('questions'),
+          Meteor.subscribe('speakers'),
+          Meteor.subscribe('programs')
+        ];
+      },
+      data: function () {
+        return Programs.findOne({shortlink: this.params.program});
+      }
+    });
+  });
   Router.route('/whatslive', function () {
     this.layout('layout_user');
     this.render('layout_user_menu', {to: 'menu'});

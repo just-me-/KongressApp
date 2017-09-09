@@ -33,6 +33,9 @@ Template.admin_program.helpers({
   },
   programSpeaker() {
     return Speakers.findOne(this.speaker);
+  },
+  dateHelper: function (dateTime) {
+    return moment(dateTime).format('MMMM DD, YYYY HH:mm');
   }
 });
 
@@ -68,6 +71,7 @@ Template.admin_program.events({
       'shortlink': target.shortlink.value,
       'description': target.description.value,
       'speaker': target.speaker.value,
+      'room': target.room.value,
       'startTime': target.startTime.value,
       'endTime': target.endTime.value,
     }
@@ -93,10 +97,14 @@ Template.admin_program.events({
   },
   'click td.edit': function(){
     // copy inputs & id for db => but not pw
-    var copyInputs = ['title', 'shortlink', 'description', 'speaker', 'startTime', 'endTime'];
+    var copyInputs = ['title', 'shortlink', 'description', 'speaker', 'room'];
     for (input of copyInputs) {
       eval(`$('#save-program #`+input+`').val(this.`+input+`)`);
     }
+    // date fields for calender tool
+    $('#save-program #startTime').val(moment(this.startTime).format('MMMM DD, YYYY HH:mm'));
+    $('#save-program #endTime').val(moment(this.endTime).format('MMMM DD, YYYY HH:mm'));
+    // id as hidden value 
     $('#save-program #id').val(this._id);
   },
   'click td.delete': function(){

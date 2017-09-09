@@ -1,8 +1,27 @@
 <template name="user_program">
-    <h1>Programm</h1>
-    <p>
-      Alle Programme nach zeitplan => ob live, link speaker
-      Beantwortete Fragen
-      Favoriten markieren... 
-    </p>
+
+    {{#if isOnlyFavorit}}
+    <h1 id="show_all" class="light">Programm - nur Favoriten</h1>
+    {{else}}
+    <h1 id="show_favorit" class="light">Programm - alle</h1>
+    {{/if}}
+
+    <div id="user_program" class="{{#if isOnlyFavorit}}onlyFavorit{{/if}}">
+      {{#each programs}}
+      <div class="program card {{#if isFavorit _id}}isFavorit{{/if}}">
+        <h2 class="left"> {{title}}  <i class="favorit material-icons md-20">favorite</i> <i class="ical material-icons md-20">event</i> {{#if isLive}}<span class="isLive">(live)</span>{{/if}}</h2>
+        <p class="right">
+          Start: {{dateHelper startTime}} <br/>
+          Ende: {{dateHelper endTime}} <br/>
+          Raum: {{room}}
+        </p>
+        <p class="clear">{{description}}</p>
+        <p>Der Speaker dieses Events ist {{speakername speaker}}.</p>
+        <a href="/details/{{shortlink}}">Mehr...</a>
+      </div>
+      {{/each}}
+    </div>
+
+    <script type="text/javascript" src="https://rawgithub.com/nwcell/ics.js/master/ics.deps.min.js"></script>
+
 </template>

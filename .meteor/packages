@@ -32,3 +32,6 @@ reywood:publish-composite
 drewy:datetimepicker
 ryanswapp:interactjs
 jabbslad:basic-auth
+momentjs:moment
+session
+robertlowe:persistent-reactive-dict

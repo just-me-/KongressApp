@@ -1,6 +1,46 @@
 <template name="user_speakers">
-    <h1>Speakers</h1>
-    <p>
-      Alle Speaker => link zu den speakern mit vorstellung
-    </p>
+    <h1 class="light">Speakers</h1>
+    <div id="user_speakers">
+      {{#each speakers}}
+      <div class="speaker card">
+        <h2 class="nomargin">{{name}} {{firstname}}</h2>
+
+        {{#if description}}
+          <p>{{description}}</p>
+        {{/if}}
+
+        {{#if email}}
+          <p class="nomargin">Mail: <a href="mailto:{{email}}">{{email}}</a></p>
+        {{/if}}
+
+        {{#if phone}}
+          <p class="nomargin">Tel.: <a href="tel:{{phone}}">{{phone}}</a></p>
+        {{/if}}
+
+        {{#if website}}
+          <p class="nomargin">Website: <a href="{{website}}" tagret=_blank>{{website}}</a></p>
+        {{/if}}
+
+        {{#if address}}
+          <p>
+            {{address}} <br/>
+            {{zip}} {{city}}
+          </p>
+        {{/if}}
+
+        {{#if img_url}}
+          <img class="profile" src="{{img_url}}" alt="Profilbild">
+        {{/if}}
+
+        {{#if has_speaker_events _id}}
+          <h3 class="nomargin">Events</h3>
+          {{#each speaker_events _id}}
+            <div class="speaker_event">
+              <a href="/details/{{shortlink}}">{{title}}</a>
+            </div>
+          {{/each}}
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
 </template>

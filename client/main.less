@@ -11,6 +11,16 @@
 body {
 }
 h1 {
+    font-size: 1.5em;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-right: 1em;
+
+    text-align: center;
+    width: 100%;
+    &.light {
+      color: #fff;
+    }
 }
 h2 {
 }
@@ -25,6 +35,8 @@ p {
 .none {display: none;}
 .scroll {overflow:scroll;}
 .overflow {overflow: auto;}
+.nomargin {margin: 0;}
+.text-center {text-align: center;}
 
 /* material icons */
 // sizing
@@ -194,6 +206,7 @@ form.card {
   color: #fff;
   border-radius: 5px;
   padding: 10px 15px;
+  max-width: 350px;
 }
 .tooltip.hide {
   opacity: 0;
@@ -323,6 +336,69 @@ form.card {
     }
   }
 }
+#user_speakers {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   .speaker {
+     width: 300px;
+     height: auto;
+     padding: 10px 20px;
+     position: relative;
+     img {
+       position: absolute;
+       top: 15px;
+       right: 20px;
+       width: 100%;
+       max-width: 90px;
+       height: auto;
+       max-height: 150px;
+       border-radius: 5px;
+     }
+     a {
+       color: #2e2e2e;
+       text-decoration: none;
+     }
+   }
+}
+#user_program {
+  .program {
+    padding: 25px 35px;
+    max-width: 450px;
+    p.right {
+      margin-bottom: 0;
+    }
+    i.material-icons {
+      top: 3px;
+      position: relative ;
+    }
+    .isLive {
+      color: #358652;
+    }
+    a {
+      color: #2e2e2e;
+    }
+    &.isFavorit .favorit {
+      color: #b12f0c;
+    }
+  }
+  &.onlyFavorit .program {
+    display: none;
+  }
+  &.onlyFavorit .program.isFavorit {
+    display: block;
+  }
+}
+#user_programDetails {
+  max-width: 850px;
+  padding: 30px 20px;
+  .anq {
+    margin: 25px 0;
+    .a {
+      font-style: italic;
+    }
+  }
+}
 
 /* ************** */
 /* keynote screen */
@@ -448,13 +524,6 @@ body {
 }
 
 h1 {
-  font-size: 1.5em;
-  margin: 0;
-  margin-bottom: 10px;
-  margin-right: 1em;
-
-  text-align: center;
-  width: 100%;
 }
 
 @media (max-width: 600px) {

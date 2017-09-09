@@ -1,6 +1,20 @@
 <template name="user_whatslive">
-    <h1>What's live</h1>
-    <p>
-      Alle aktuellen programme
-    </p>
+    <h1 class="light">What's live</h1>
+
+    <div id="user_program" class="live_list">
+      {{#each programs}}
+      <div class="program card">
+        <h2 class="left"> {{title}} <span class="isLive">(live)</span></h2>
+        <p class="right">
+          Start: {{dateHelper startTime}} <br/>
+          Ende: {{dateHelper endTime}} <br/>
+          Raum: {{room}}
+        </p>
+        <p class="clear">{{description}}</p>
+        <p>Der Speaker dieses Events ist {{speakername speaker}}.</p>
+        <a href="/ask/{{shortlink}}">Frage stellen...</a>
+      </div>
+      {{/each}}
+    </div>
+
 </template>

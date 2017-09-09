@@ -13,6 +13,11 @@
         <input id="shortlink" name="shortlink" type="text" required />
         <i class="material-icons helpicon" data-tooltip="Daraus wird der Link für das Publikum generiert.">help</i>
       </div>
+      <div id="div-room">
+        <label for="room">Raum *</label>
+        <input id="room" name="room" type="text" required />
+        <i class="material-icons helpicon" data-tooltip="Ort, an welchem die Vorlesung stattfindet.">help</i>
+      </div>
       <div id="div-description">
         <label for="description">Beschreibung</label>
         <textarea id="description" name="text"></textarea>
@@ -48,6 +53,7 @@
         <th class="delete">Löschen</th>
         <th class="edit">Ändern</th>
         <th class="shortlink">Referenz</th>
+        <th class="room none">Raum</th>
         <th class="title">Titel</th>
         <th class="description">Beschreibung</th>
         <th class="speaker none">Speaker</th>
@@ -63,6 +69,7 @@
           <td class="shwortlink">{{shortlink}}</td>
           <td class="title">{{title}}</td>
           <td class="description">{{description}}</td>
+          <td class="room none">{{room}}</td>
           <td class="speaker none">{{speaker}}</td>
           <td class="speakername">
             {{#if programSpeaker}}
@@ -71,8 +78,8 @@
               Redner wurde gelöscht!
             {{/if}}
           </td>
-          <td class="startTime none">{{startTime}}</td>
-          <td class="endTime none">{{endTime}}</td>
+          <td class="startTime none">{{dateHelper startTime}}</td>
+          <td class="endTime none">{{dateHelper endTime}}</td>
         </tr>
       {{/each}}
 

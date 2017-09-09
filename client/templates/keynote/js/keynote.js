@@ -56,7 +56,7 @@ Template.keynote.helpers({
     return Sponsors.find({}, { sort: { createdAt: -1 } });
   },
   currentURL() {
-    var link = Meteor.absoluteUrl().replace(/^https?\:\/\//i, "")+Iron.Location.get().path;;
+    var link = Meteor.absoluteUrl().replace(/^https?\:\/\//i, "")+Iron.Location.get().path;
     return link.replace(/\/keynote/i, 'ask');
   }
 });

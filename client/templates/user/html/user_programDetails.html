@@ -1,0 +1,35 @@
+<template name="user_programDetails">
+
+  <div id="user_programDetails" class="clear card text-center ">
+  {{#if title}}
+
+    <h1>Event: {{title}}</h1>
+    <p>
+      Das Event startet voraussichtlich am {{dateHelper startTime}}
+      im Raum {{room}} 
+      und endet am {{dateHelper endTime}}.
+    </p>
+    <p>{{description}}</p>
+
+    <h2>Speaker</h2>
+    <p>Dieses Event wird von {{speakerName speaker}} abgehalten.</p>
+    {{#if speakerDescription speaker}}
+      <p>{{speakerDescription speaker}} </p>
+    {{/if}}
+
+    {{#if hasAnsweredQuestions _id}}
+      <h2>Beantwortete Fragen</h2>
+      {{#each answeredQuestions _id}}
+        <div class="anq">
+          <p class="q nomargin">{{question}}</p>
+          <p class="a nomargin">{{answer}}</p>
+        </div>
+      {{/each}}
+    {{/if}}
+
+  {{else}}
+    <h1>Kein Event gefunden! Prüfe Deine Link-Eingabe...</h1>
+  {{/if}}
+  </div>
+
+</template>
