@@ -40,6 +40,8 @@ Template.admin_sponsor.events({
       swal("Oops...", "Einige Angaben fehlen oder sind nicht korrekt!", "error");
       return;
     }
+    // time allows only numbers
+    $('#save-sponsor #time').val($('#save-sponsor #time').val().replace(/[^0-9.]/g, ""));
 
     // Insert a sponsor into the collection
     var sponsorData = {

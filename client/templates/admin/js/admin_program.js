@@ -60,6 +60,13 @@ Template.admin_program.events({
         failed = true;
       }
     });
+    // check if reference is unique
+    var int = Programs.find({shortlink: target.shortlink.value, _id: { $ne: target.id.value}}, { }).count();
+    if(int >= 1) {
+      $('#save-program #shortlink').addClass('error');
+      failed = true;
+    }
+
     if(failed == true){
       swal("Oops...", "Einige Angaben fehlen oder sind nicht korrekt!", "error");
       return;
@@ -104,7 +111,7 @@ Template.admin_program.events({
     // date fields for calender tool
     $('#save-program #startTime').val(moment(this.startTime).format('MMMM DD, YYYY HH:mm'));
     $('#save-program #endTime').val(moment(this.endTime).format('MMMM DD, YYYY HH:mm'));
-    // id as hidden value 
+    // id as hidden value
     $('#save-program #id').val(this._id);
   },
   'click td.delete': function(){
