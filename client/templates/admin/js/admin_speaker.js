@@ -42,7 +42,7 @@ Template.admin_speaker.events({
     });
     // check mail
     var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!regex.test($('#save-speaker #email').val())) {
+    if($('#save-speaker #email').val().length != 0 && !regex.test($('#save-speaker #email').val())) {
       $('#save-speaker #email').addClass('error');
       failed = true;
     }
