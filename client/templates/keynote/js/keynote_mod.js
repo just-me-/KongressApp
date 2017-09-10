@@ -11,81 +11,8 @@ Template.keynote_mod.onCreated(function bodyOnCreated() {
   Meteor.subscribe('programs');
 });
 
-// drag n drop
 Template.keynote_mod.onRendered(function(){
-  // target elements with the "draggable" class
-  interact('.draggable').draggable({
-      // enable inertial throwing
-      inertia: true,
-      // keep the element within the area of it's parent
-      restrict: {
-          restriction: "parent",
-          endOnly: true,
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-      },
-      autoScroll: true,
-      onstart: function (event) {
-          console.log('onstart');
-
-      },
-      onmove: dragMoveListener,
-      onend: function (event) {
-          console.log('onend');
-      }
-  });
-
-  // enable draggables to be dropped into this
-  interact('.dropzone').dropzone({
-    // only accept elements matching this CSS selector
-    accept: '#yes-drop',
-    // Require a 75% element overlap for a drop to be possible
-    overlap: 0.75,
-
-    ondropactivate: function (event) {
-      event.target.classList.add('drop-active');
-    },
-    ondragenter: function (event) {
-      var draggableElement = event.relatedTarget,
-          dropzoneElement = event.target;
-
-      // feedback the possibility of a drop
-      dropzoneElement.classList.add('drop-target');
-      draggableElement.classList.add('can-drop');
-      draggableElement.textContent = 'Dragged in';
-    },
-    ondragleave: function (event) {
-      // remove the drop feedback style
-      event.target.classList.remove('drop-target');
-      event.relatedTarget.classList.remove('can-drop');
-      event.relatedTarget.textContent = 'Dragged out';
-    },
-    ondrop: function (event) {
-      event.relatedTarget.textContent = 'Dropped';
-    },
-    ondropdeactivate: function (event) {
-      // remove active dropzone feedback
-      event.target.classList.remove('drop-active');
-      event.target.classList.remove('drop-target');
-    }
-  });
-  function dragMoveListener (event) {
-      console.log('dragMoveListener');
-      var target = event.target,
-          // keep the dragged position in the data-x/data-y attributes
-          x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-          y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-      // translate the element
-      target.style.webkitTransform =
-          target.style.transform =
-              'translate(' + x + 'px, ' + y + 'px)';
-
-      // update the position attributes
-      target.setAttribute('data-x', x);
-      target.setAttribute('data-y', y);
-  }
 });
-
 
 Template.keynote_mod.helpers({
   new_questions() {
@@ -120,5 +47,38 @@ Template.keynote_mod.events({
   },
   'click .question i.add_crap': function(){
     Meteor.call('questions.changeStatus', this._id, 'crap');
-  }
+  },
+  // drag n drop events
+  'mousedown .question': function(){
+    $('#movingQuestionId').val(this._id);
+    $('#movingQuestionStatus').val(this.status);
+  },
+  'mouseup #nice': function(){
+    var id = $('#movingQuestionId').val();
+    var status = $('#movingQuestionStatus').val();
+    if(id && status != 'nice') {
+      Meteor.call('questions.changeStatus', id, "nice");
+    }
+  },
+  'mouseup #live': function(){
+    var id = $('#movingQuestionId').val();
+    var status = $('#movingQuestionStatus').val();
+    if(id && status != 'live') {
+      Meteor.call('questions.changeStatus', id, "live");
+    }
+  },
+  'mouseup #crap': function(){
+    var id = $('#movingQuestionId').val();
+    var status = $('#movingQuestionStatus').val();
+    if(id && status != 'crap') {
+      Meteor.call('questions.changeStatus', id, "crap");
+    }
+  },
+  // fallback mouse up - trigger delay just in case
+  'mouseup': function(){
+    setTimeout( function(){
+      $('#movingQuestionId').val("");
+      $('#movingQuestionStatus').val("");
+    }  , 100 );
+  },
 });

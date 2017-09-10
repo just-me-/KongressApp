@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div id="mod_content">
+      <div id="mod_content" class="noselect">
         <div id="new" class="question-3 scroll">
           <h2 data-tooltip="Alle neu erstellten Fragen werden in diesem Bereich aufgelistet. Neue Fragen können nur erstellt werden, wenn die Session gestartet ist.">New</h2>
           {{#each new_questions}}
@@ -55,8 +55,8 @@
             </div>
           {{/each}}
         </div>
-        <div id="live" class="question-3">
-          <div class="question-50 scroll">
+        <div class="question-3">
+          <div id="live" class="question-50 scroll">
             <h2 data-tooltip="Alle hier vorhandenen Fragen werden auf der Keynote angezeigt.">Live</h2>
             {{#each live_questions}}
               <div class="question">
@@ -82,22 +82,8 @@
           </div>
         </div>
       </div>
-
-      <div id="demo">
-        <div id="no-drop" class="draggable drag-drop"> #no-drop </div>
-
-        <div id="yes-drop" class="draggable drag-drop"> #yes-drop </div>
-
-        <div id="outer-dropzone" class="dropzone">
-        #outer-dropzone
-        <div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
-        </div>
-      </div>
-
-
-      <div id="keynote_questions">
-
-      </div>
+      <input id="movingQuestionId" value="" type="hidden">
+      <input id="movingQuestionStatus" value="" type="hidden">
 
     {{else}}
       <h1>Keine Keynote gefunden! Prüfe Deine Link-Eingabe...</h1>

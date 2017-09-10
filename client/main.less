@@ -1,7 +1,8 @@
 /* ********** */
 /* color vars */
 /* ********** */
-
+@main-color: #315481;
+@2nd-color: #918e82;
 
 /* ******* */
 /* General */
@@ -9,6 +10,22 @@
 
 /* basic stuff */
 body {
+  font-family: Verdana, Verdana, Geneva, sans-serif;
+  background-color: @2nd-color;
+  background-image: linear-gradient(to bottom, @main-color, @2nd-color 100%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+  color: #2e2e2e;
 }
 h1 {
     font-size: 1.5em;
@@ -43,6 +60,14 @@ p {
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-20 { font-size: 20px; }
 .material-icons.md-24 { font-size: 24px; }
+
+// no select
+.noselect {
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* IE/Edge */
+	user-select: none;           /* non-prefixed version */
+}
 
 /* form and co */
 // inputs
@@ -499,80 +524,4 @@ form.card {
       margin-right: 0;
     }
   }
-}
-
-// mby for later
-
-
-body {
-  font-family: Verdana, Verdana, Geneva, sans-serif;
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-attachment: fixed;
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  padding: 0;
-  margin: 0;
-
-  font-size: 14px;
-  color: #2e2e2e;
-}
-
-
-
-
-// DROP ZONE
-
-
-#outer-dropzone {
-  height: 140px;
-}
-
-#inner-dropzone {
-  height: 80px;
-}
-
-.dropzone {
-  background-color: #ccc;
-  border: dashed 4px transparent;
-  border-radius: 4px;
-  margin: 10px auto 30px;
-  padding: 10px;
-  width: 80%;
-  transition: background-color 0.3s;
-}
-
-.drop-active {
-  border-color: #aaa;
-}
-
-.drop-target {
-  background-color: #29e;
-  border-color: #fff;
-  border-style: solid;
-}
-
-.drag-drop {
-  display: inline-block;
-  min-width: 40px;
-  padding: 2em 0.5em;
-
-  color: #fff;
-  background-color: #29e;
-  border: solid 2px #fff;
-
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-
-  transition: background-color 0.3s;
-}
-
-.drag-drop.can-drop {
-  color: #000;
-  background-color: #4e4;
 }
