@@ -58,8 +58,17 @@ Jede Collection besitzt ein Schema, welches sozusagen die Klassenvariabeln defin
 ### Installierte Pakete 
 Eine Liste der von Meteor automatisch installierten Pakete sowie der zusätzlichen gibt es unter *.meteor/packages* einzusehen. 
 
-## Installation einrichten 
-* Ein üblicher Git-Pull vom Rep. => ins Verzeichnis wechseln 
-* Falls Meteor noch nicht installiert: *curl https://install.meteor.com/ | sh* (macOS)
+## Installation einrichten (macOS)
+* Ein üblicher Git-Clone vom Rep. => ins Verzeichnis wechseln (*git clone https://github.com/[...]* und dann *cd [...])
+* Falls Meteor noch nicht installiert: *curl https://install.meteor.com/ | sh* 
+* *meteor npm install* 
 * Meteor lokal ausführen: *meteor*
 * Die Applikation kann nun über *http://localhost:3000* aufgerufen werden
+
+### Standart Passwörter
+```
+User: Admin PW: 1234
+User: Moderation PW: 12
+```
+Ändern unter */server/passwords.js*
+
