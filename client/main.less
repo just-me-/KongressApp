@@ -1,8 +1,16 @@
 /* ********** */
 /* color vars */
 /* ********** */
+// blue
 @main-color: #315481;
 @2nd-color: #918e82;
+// red
+@main-color: #bb6dec;
+@2nd-color: #EA5C54;
+// yellow
+@main-color: #FE9508;
+@2nd-color: #FCC62E;
+
 
 /* ******* */
 /* General */
@@ -12,7 +20,7 @@
 body {
   font-family: Verdana, Verdana, Geneva, sans-serif;
   background-color: @2nd-color;
-  background-image: linear-gradient(to bottom, @main-color, @2nd-color 100%);
+  background-image: linear-gradient(to bottom left, @main-color, @2nd-color 100%);
   background-attachment: fixed;
 
   position: absolute;
@@ -253,6 +261,7 @@ form.card {
     height:100vh;
     width: 200px;
     background: #fff;
+    background-image: linear-gradient(to bottom, #fff, @2nd-color 100%);
     position: fixed;
     .menu-element {
       background: rgba(46, 46, 46, 0.9);

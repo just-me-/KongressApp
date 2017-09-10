@@ -8,9 +8,9 @@ Meteor.startup(function(){
     notFoundTemplate: "404_notfound"
   });
 
-  // tmp home
+  // home redirect to user program 
   Router.route('/', function () {
-    this.render('home');
+    this.redirect('/program');
   });
 
   // user sites
