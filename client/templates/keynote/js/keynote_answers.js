@@ -16,6 +16,7 @@ Template.keynote_answers.onRendered(function(){
   setTimeout( function(){
     autosize($('textarea'));
   }  , 500 );
+  document.title = document.title+" - Keynote Q&A";
 });
 
 Template.keynote_answers.helpers({

@@ -46,6 +46,7 @@ Template.keynote.onRendered(function(){
         initialSlide: 2
     });
   }  , 500 );
+  document.title = document.title+" - Keynote";
 });
 
 Template.keynote.helpers({

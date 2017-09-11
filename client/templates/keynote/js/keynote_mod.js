@@ -12,6 +12,7 @@ Template.keynote_mod.onCreated(function bodyOnCreated() {
 });
 
 Template.keynote_mod.onRendered(function(){
+  document.title = document.title+" - Keynote Moderation";
 });
 
 Template.keynote_mod.helpers({
