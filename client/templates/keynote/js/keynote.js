@@ -5,11 +5,13 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Questions } from '../../../../imports/collections/questions.js';
 import { Programs } from '../../../../imports/collections/programs.js';
 import { Sponsors } from '../../../../imports/collections/sponsors.js';
+import { Rooms } from '../../../../imports/collections/rooms.js';
 
 Template.keynote.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('questions');
   Meteor.subscribe('programs');
+  Meteor.subscribe('rooms');
   Meteor.subscribe('sponsors');
 });
 
@@ -57,7 +59,6 @@ Template.keynote.helpers({
     return Sponsors.find({}, { sort: { createdAt: -1 } });
   },
   currentURL() {
-    var link = Meteor.absoluteUrl().replace(/^https?\:\/\//i, "")+Iron.Location.get().path;
-    return link.replace(/\/keynote/i, 'ask');
+    return Meteor.absoluteUrl().replace(/^https?\:\/\//i, "")+"ask/"+Template.instance().data.shortlink;
   }
 });

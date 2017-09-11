@@ -4,11 +4,13 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Questions } from '../../../../imports/collections/questions.js';
 import { Programs } from '../../../../imports/collections/programs.js';
+import { Rooms } from '../../../../imports/collections/rooms.js';
 
 Template.keynote_mod.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('questions');
   Meteor.subscribe('programs');
+  Meteor.subscribe('rooms');
 });
 
 Template.keynote_mod.onRendered(function(){

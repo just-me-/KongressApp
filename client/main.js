@@ -95,29 +95,35 @@ Meteor.startup(function(){
   });
 
   // keynote sites
-  Router.route('/keynote/:program', function () {
+  Router.route('/keynote/:room', function () {
     this.render('keynote', {
       waitOn: function() {
         return [
           Meteor.subscribe('questions'),
+          Meteor.subscribe('rooms'),
           Meteor.subscribe('programs')
         ];
       },
       data: function () {
-        return Programs.findOne({shortlink: this.params.program});
+        return Programs.findOne({room: this.params.room, isLive: true});
       }
     });
   });
-  Router.route('/keynote_mod/:program', function () {
+
+  Router.route('/keynote_mod', function () {
+    this.render('keynote_room');
+  });
+  Router.route('/keynote_mod/:room', function () {
     this.render('keynote_mod', {
       waitOn: function() {
         return [
           Meteor.subscribe('questions'),
+          Meteor.subscribe('rooms'),
           Meteor.subscribe('programs')
         ];
       },
       data: function () {
-        return Programs.findOne({shortlink: this.params.program});
+        return Programs.findOne({room: this.params.room, isLive: true});
       }
     });
   });

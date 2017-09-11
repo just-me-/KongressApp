@@ -1,0 +1,10 @@
+<template name="keynote_room">
+  <div id="keynote_room" class="overflow card">
+    <h1>Wählen Sie Ihren Raum</h1>
+    {{#each rooms}}
+      <div class="room">
+        <a href="/keynote_mod/{{_id}}">{{name}}</a>
+      </div>
+    {{/each}}
+  </div>
+</template>
