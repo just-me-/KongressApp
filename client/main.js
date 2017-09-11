@@ -8,7 +8,7 @@ Meteor.startup(function(){
     notFoundTemplate: "404_notfound"
   });
 
-  // home redirect to user program 
+  // home redirect to user program
   Router.route('/', function () {
     this.redirect('/program');
   });
@@ -77,6 +77,11 @@ Meteor.startup(function(){
     this.layout('layout_admin');
     this.render('layout_admin_menu', {to: 'menu'});
     this.render('admin_program');
+  });
+  Router.route('/admin_room', function () {
+    this.layout('layout_admin');
+    this.render('layout_admin_menu', {to: 'menu'});
+    this.render('admin_room');
   });
   Router.route('/admin_speaker', function () {
     this.layout('layout_admin');

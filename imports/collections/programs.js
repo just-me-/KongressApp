@@ -82,6 +82,7 @@ Meteor.methods({
         shortlink: programData['shortlink'],
         speaker: programData['speaker'],
         room: programData['room'],
+        isLive: false,
         startTime: new Date(programData['startTime']),
         endTime: new Date(programData['endTime']),
         lastChange: new Date(),
@@ -97,6 +98,18 @@ Meteor.methods({
         lastChange: new Date(),
       },
     });
+  },
+  'programs.stopRoomSessions'(roomId) {
+    check(roomId, String);
+
+    Programs.update(
+      {room: roomId}, // select
+      {               // update
+        $set: {
+          isLive: false,
+        },
+      },
+    {multi: true});   // option
   },
   'programs.remove'(taskId) {
     check(taskId, String);

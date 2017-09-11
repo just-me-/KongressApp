@@ -5,11 +5,13 @@ import { Session } from 'meteor/session'
 
 import { Programs } from '../../../../imports/collections/programs.js';
 import { Speakers } from '../../../../imports/collections/speakers.js';
+import { Rooms } from '../../../../imports/collections/rooms.js';
 
 Template.user_whatslive.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('programs');
   Meteor.subscribe('speakers');
+  Meteor.subscribe('rooms');
 });
 
 Template.user_whatslive.helpers({
@@ -19,6 +21,10 @@ Template.user_whatslive.helpers({
   speakername(id) {
     var speaker = Speakers.findOne(id);
     return speaker.firstname + " " + speaker.name;
+  },
+  roomname(id) {
+    var room = Rooms.findOne(id);
+    return room.name;
   },
   dateHelper: function (dateTime) {
     return moment(dateTime).format('DD.MM.YYYY HH:mm');

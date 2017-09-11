@@ -3,11 +3,13 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Speakers } from '../../../../imports/collections/speakers.js';
+import { Rooms } from '../../../../imports/collections/rooms.js';
 import { Programs } from '../../../../imports/collections/programs.js';
 
 Template.admin_program.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('speakers');
+  Meteor.subscribe('rooms');
   Meteor.subscribe('programs');
 });
 
@@ -28,11 +30,17 @@ Template.admin_program.helpers({
   speakers() {
     return Speakers.find({}, { sort: { createdAt: -1 } });
   },
+  rooms() {
+    return Rooms.find({}, { sort: { createdAt: -1 } });
+  },
   programs() {
     return Programs.find({}, { sort: { createdAt: -1 } });
   },
   programSpeaker() {
     return Speakers.findOne(this.speaker);
+  },
+  programRoom() {
+    return Rooms.findOne(this.room);
   },
   dateHelper: function (dateTime) {
     return moment(dateTime).format('MMMM DD, YYYY HH:mm');
@@ -116,5 +124,14 @@ Template.admin_program.events({
   },
   'click td.delete': function(){
     Meteor.call('programs.remove', this._id);
-  }
+  },
+  // start / stop stop_session
+  'click td.session i.startSession': function(){
+    // aleays only one session for each room
+    Meteor.call('programs.stopRoomSessions', this.room);
+    Meteor.call('programs.changeStatus', this._id, true);
+  },
+  'click td.session i.stopSession': function(){
+    Meteor.call('programs.changeStatus', this._id, false);
+  },
 });

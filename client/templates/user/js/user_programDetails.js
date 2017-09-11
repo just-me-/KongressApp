@@ -5,12 +5,14 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Questions } from '../../../../imports/collections/questions.js';
 import { Programs } from '../../../../imports/collections/programs.js';
 import { Speakers } from '../../../../imports/collections/speakers.js';
+import { Rooms } from '../../../../imports/collections/rooms.js';
 
 Template.user_programDetails.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('questions');
   Meteor.subscribe('speakers');
   Meteor.subscribe('programs');
+  Meteor.subscribe('rooms');
 });
 
 Template.user_programDetails.helpers({
@@ -21,6 +23,10 @@ Template.user_programDetails.helpers({
   speakerDescription(id) {
     var speaker = Speakers.findOne(id);
     return speaker.description;
+  },
+  roomname(id) {
+    var room = Rooms.findOne(id);
+    return room.name;
   },
   answeredQuestions(id) {
     return Questions.find({program: id, answer: {"$exists" : true, "$ne" : ""}}, {lastChange: -1});

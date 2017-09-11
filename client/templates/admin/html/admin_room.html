@@ -1,0 +1,43 @@
+<template name="admin_room">
+  <h1>Räume</h1>
+
+  <div class="container">
+
+    <form id="save-room" class="clear card">
+      <div id="div-name">
+        <label for="name">Raum *</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+      <div id="div-buttons" class="clear">
+        <input id="id" name="id" type="hidden" value="">
+        <span class="labelspace"></span>
+        <input id="save" name="save" type="submit" value="Speichern" class="button">
+        <input id="reset" name="reset" type="reset" value="Reset" class="button not-main">
+      </div>
+    </form>
+
+    <table id="listed-rooms" class="clear">
+      <tr class="table-header">
+        <th class="delete">Löschen</th>
+        <th class="edit">Ändern</th>
+        <th class="name">Name</th>
+      </tr>
+
+      {{#each rooms}}
+        {{> room}}
+      {{/each}}
+
+    </table>
+
+  </div>
+  {{ > tooltips }}
+</template>
+
+
+<template name="room">
+  <tr class="table-body">
+    <td class="delete"><i class="material-icons md-20">delete</i></td>
+    <td class="edit"><i class="material-icons md-20">edit</i></td>
+    <td class="name">{{name}}</td>
+  </tr>
+</template>
