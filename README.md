@@ -10,7 +10,7 @@ Auch können offengebliebene Fragen von der Moderation im Nachhinein beantwortet
 Die Administration erhält einen eigenen Benutzernamen mit Passwort.
 Zurzeit stehen dem Admin drei Seiten zur Auswahl:
 ```
-/admin_program /admin_speaker /admin_sponsor
+/admin_program /admin_speaker /admin_sponsor /admin_room
 ```
 #### Sponsoren
 Im Bereich Sponsoren werden die Kongresssponsoren erfasst. Man kann ihnen unter anderem ein Logo zuweisen und wie lange dieses angezeigt werden soll.
@@ -18,12 +18,18 @@ So besteht die Möglichkeit, wichtigen Sponsoren mehr Anzeigezeit zugeben, als k
 #### Sprecher
 Bei den Speakern kann man die einzelnen Speaker erfassen. Die Benutzer können so zusätzliche Information über die Sprecher einholen;
 wie beispielsweise eine kurze Beschreibung oder Kontaktdaten.
+#### Räume
+Die Raumverwaltung wurde implementiert, damit pro Raum immer nur eine Session aktiv sein kann.
 #### Programm
 Hier werden die einzelnen Events erfasst. Sie erhalten einen Titel, eine Referenz (dies dient für einen möglichst kurzen URL für die Besucher),
 einen Sprecher, einen Raum sowie Start- und Endzeit.
+Die Administration kann direkt von hier aus pro Raum eine aktive Session starten.
+Will man eine zweite Session für einen Raum aktivieren, wird automatisch erstere gestoppt.
 
 ### Moderation
-Die Moderation hat ebenfalls einen eigenen Zugang zum Backend. Sie bewegt sich primär auf der Seite */keynote_mod/EVENT*.
+Die Moderation hat ebenfalls einen eigenen Zugang zum Backend. Über */keynote_mod* erhält sie eine Übersicht
+aller zur Verfügung stehenden Räumen. So wird sie weitergeleitet zu ihrer primären Seite */keynote_mod/RAUM*,
+wo jeweils das Programm mit der aktiven Session dargestellt wird.
 Von dieser Seite aus hat sie automatisch Zugriff auf das Keynote-Tab sowie das Q&A-Tab.
 #### Menü
 In der Menüleiste hat die Moderation die Möglichkeit, die Session für Fragen zu starten und wieder zu beenden.
