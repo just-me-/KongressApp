@@ -57,6 +57,7 @@
         <th class="delete">Löschen</th>
         <th class="edit">Ändern</th>
         <th class="session">Session Status</th>
+        <th class="keynote">Keynote</th>
         <th class="title">Titel</th>
         <th class="shortlink">Referenz</th>
         <th class="description none">Beschreibung</th>
@@ -78,6 +79,11 @@
             {{else}}
               <i class="material-icons md-20 startSession">play_circle_filled</i>
             {{/if}}
+          </td>
+          <td class="keynote">
+            <a href="/keynote/{{shortlink}}" target=_blank>
+              <i class="material-icons md-20">open_in_new</i>
+            </a>
           </td>
           <td class="title">{{title}}</td>
           <td class="shortlink">{{shortlink}}</td>
