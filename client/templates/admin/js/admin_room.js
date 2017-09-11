@@ -3,10 +3,12 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Rooms } from '../../../../imports/collections/rooms.js';
+import { Programs } from '../../../../imports/collections/programs.js';
 
 Template.admin_room.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('rooms');
+  Meteor.subscribe('programs');
 });
 
 Template.admin_room.helpers({
@@ -74,6 +76,12 @@ Template.admin_room.events({
     $('#save-room #id').val(this._id);
   },
   'click td.delete': function(){
-    Meteor.call('rooms.remove', this._id);
+    // check if speaker is in use
+    var int = Programs.find({room: this._id}).count();
+    if(int == 0) {
+      Meteor.call('rooms.remove', this._id);
+    } else {
+      swal("Fehler!", "Dieser Raum ist noch in Verwendung.", "error");
+    }
   }
 });

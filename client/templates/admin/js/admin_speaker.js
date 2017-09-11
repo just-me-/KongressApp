@@ -3,10 +3,12 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Speakers } from '../../../../imports/collections/speakers.js';
+import { Programs } from '../../../../imports/collections/programs.js';
 
 Template.admin_speaker.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('speakers');
+  Meteor.subscribe('programs');
 });
 
 Template.admin_speaker.onRendered(function(){
@@ -94,6 +96,12 @@ Template.admin_speaker.events({
     $('#save-speaker #id').val(this._id);
   },
   'click td.delete': function(){
-    Meteor.call('speakers.remove', this._id);
+    // check if speaker is in use
+    var int = Programs.find({speaker: this._id}).count();
+    if(int == 0) {
+      Meteor.call('speakers.remove', this._id);
+    } else {
+      swal("Fehler!", "Dieser Speaker ist noch in Verwendung.", "error");
+    }
   }
 });

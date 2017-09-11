@@ -61,12 +61,12 @@
         <th class="title">Titel</th>
         <th class="shortlink">Referenz</th>
         <th class="description none">Beschreibung</th>
-        <th class="room none">Raum</th>
-        <th class="roomname">Raum</th>
         <th class="speaker none">Speaker</th>
         <th class="speakername">Speaker Name</th>
         <th class="startTime none">Start</th>
         <th class="endTime none">Ende</th>
+        <th class="room none">Raum</th>
+        <th class="roomname">Raum</th>
       </tr>
 
       {{#each programs}}
@@ -88,14 +88,6 @@
           <td class="title">{{title}}</td>
           <td class="shortlink">{{shortlink}}</td>
           <td class="description none">{{description}}</td>
-          <td class="room none">{{room}}</td>
-          <td class="roomname">
-            {{#if programRoom}}
-              {{programRoom.name}}
-            {{else}}
-              Raum wurde gelöscht!
-            {{/if}}
-          </td>
           <td class="speaker none">{{speaker}}</td>
           <td class="speakername">
             {{#if programSpeaker}}
@@ -106,6 +98,14 @@
           </td>
           <td class="startTime none">{{dateHelper startTime}}</td>
           <td class="endTime none">{{dateHelper endTime}}</td>
+          <td class="room none">{{room}}</td>
+          <td class="roomname">
+            {{#if programRoom}}
+              {{programRoom.name}}
+            {{else}}
+              Raum wurde gelöscht!
+            {{/if}}
+          </td>
         </tr>
       {{/each}}
 
